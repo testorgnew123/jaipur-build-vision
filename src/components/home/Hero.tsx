@@ -101,7 +101,7 @@ export function Hero() {
                 key={b.label}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-xs font-medium"
               >
-                <b.icon className="w-3.5 h-3.5 text-gold" />
+                <b.icon className="w-3.5 h-3.5 text-success" />
                 {b.label}
               </div>
             ))}
