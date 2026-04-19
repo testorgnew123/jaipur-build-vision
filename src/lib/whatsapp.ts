@@ -1,5 +1,5 @@
 // WhatsApp prefill helper. Replace WHATSAPP_NUMBER with the real number before launch.
-export const WHATSAPP_NUMBER = "919876543210"; // placeholder — country code + number, no +
+export const WHATSAPP_NUMBER = "919462723134"; // placeholder — country code + number, no +
 
 type WhatsAppContext =
   | "hero"

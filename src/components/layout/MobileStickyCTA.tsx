@@ -7,7 +7,7 @@ export function MobileStickyCTA() {
     <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur-lg border-t border-border shadow-elegant">
       <div className="grid grid-cols-3 divide-x divide-border">
         <a
-          href="tel:+919876543210"
+          href="tel:+919462723134"
           className="flex flex-col items-center justify-center py-3 gap-1 text-xs font-medium"
         >
           <Phone className="w-5 h-5 text-gold" />

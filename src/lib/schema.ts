@@ -1,7 +1,7 @@
 import { reviews, aggregateRating } from "@/data/reviews";
 
-const SITE_URL = "https://singlestop.in";
-const PHONE = "+91-98765-43210";
+const SITE_URL = "https://singlestop.co.in";
+const PHONE = "+91-94627-23134";
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",

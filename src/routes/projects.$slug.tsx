@@ -3,36 +3,12 @@ import { getProject, projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MapPin, MessageCircle, Calendar, IndianRupee, Ruler } from "lucide-react";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-import { projectSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };
-  },
-  head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Project — SingleStop" }] };
-    const p = loaderData.project;
-    return {
-      meta: [
-        { title: `${p.title} — SingleStop Jaipur` },
-        { name: "description", content: p.description },
-        { property: "og:title", content: p.title },
-        { property: "og:description", content: p.description },
-        { property: "og:image", content: p.cover },
-        { property: "og:type", content: "article" },
-        { name: "twitter:image", content: p.cover },
-      ],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify(projectSchema({
-            title: p.title, description: p.description, image: p.cover, location: p.location, slug: p.slug,
-          })),
-        },
-      ],
-    };
   },
   errorComponent: ({ error, reset }) => {
     const router = useRouter();

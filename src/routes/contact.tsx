@@ -39,10 +39,10 @@ function ContactPage() {
           </div>
 
           <div className="lg:col-span-2 space-y-4">
-            <a href="tel:+919876543210" className="block rounded-2xl bg-ink text-white p-6 hover:bg-ink/90 transition-colors">
+            <a href="tel:+919462723134" className="block rounded-2xl bg-ink text-white p-6 hover:bg-ink/90 transition-colors">
               <Phone className="w-6 h-6 text-gold" />
               <div className="mt-3 text-xs text-white/60 uppercase tracking-wider">Call us</div>
-              <div className="mt-1 font-display font-bold text-xl">+91 98765 43210</div>
+              <div className="mt-1 font-display font-bold text-xl">+91 94627 23134</div>
               <div className="mt-1 text-xs text-white/60">Mon-Sat · 9 AM – 7 PM</div>
             </a>
 
@@ -53,10 +53,10 @@ function ContactPage() {
               <div className="mt-1 text-xs text-white/80">Available 24/7</div>
             </a>
 
-            <a href="mailto:hello@singlestop.in" className="block rounded-2xl bg-card border border-border p-6 hover:border-gold transition-colors">
+            <a href="mailto:info@singlestop.co.in" className="block rounded-2xl bg-card border border-border p-6 hover:border-gold transition-colors">
               <Mail className="w-6 h-6 text-gold" />
               <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Email</div>
-              <div className="mt-1 font-display font-bold text-xl">hello@singlestop.in</div>
+              <div className="mt-1 font-display font-bold text-xl">info@singlestop.co.in</div>
             </a>
 
             <div className="rounded-2xl bg-card border border-border p-6">

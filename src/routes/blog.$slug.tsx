@@ -2,36 +2,12 @@ import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-rout
 import { getPost, posts } from "@/data/posts";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { articleSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
     const post = getPost(params.slug);
     if (!post) throw notFound();
     return { post };
-  },
-  head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Article — SingleStop" }] };
-    const p = loaderData.post;
-    return {
-      meta: [
-        { title: `${p.title} — SingleStop` },
-        { name: "description", content: p.excerpt },
-        { property: "og:title", content: p.title },
-        { property: "og:description", content: p.excerpt },
-        { property: "og:image", content: p.cover },
-        { property: "og:type", content: "article" },
-        { name: "twitter:image", content: p.cover },
-      ],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify(articleSchema({
-            title: p.title, description: p.excerpt, image: p.cover, author: p.author, publishedAt: p.publishedAt, slug: p.slug,
-          })),
-        },
-      ],
-    };
   },
   errorComponent: ({ error, reset }) => {
     const router = useRouter();

@@ -55,11 +55,11 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           <a
-            href="tel:+919876543210"
+            href="tel:+919462723134"
             className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground"
           >
             <Phone className="w-4 h-4 text-gold" />
-            +91 98765 43210
+            +91 94627 23134
           </a>
           <Button asChild className="bg-gold hover:bg-gold/90 text-gold-foreground font-semibold shadow-gold">
             <Link to="/contact">Get Quote</Link>
@@ -98,11 +98,11 @@ export function Navbar() {
                 </Link>
               </Button>
               <a
-                href="tel:+919876543210"
+                href="tel:+919462723134"
                 className="mt-2 flex items-center justify-center gap-2 text-sm font-medium py-3 rounded-lg border border-border"
               >
                 <Phone className="w-4 h-4 text-gold" />
-                +91 98765 43210
+                +91 94627 23134
               </a>
             </div>
           </SheetContent>

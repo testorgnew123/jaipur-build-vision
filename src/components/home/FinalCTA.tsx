@@ -29,7 +29,7 @@ export function FinalCTA() {
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-            <a href="tel:+919876543210">
+            <a href="tel:+919462723134">
               <Phone className="mr-2 w-4 h-4" /> Call Now
             </a>
           </Button>

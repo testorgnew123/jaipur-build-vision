@@ -51,7 +51,7 @@ export function FinanceSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group relative rounded-xl bg-background border border-border hover:border-gold/60 hover:shadow-soft transition-all p-4 lg:p-5 flex flex-col items-center justify-center min-h-[140px] gold-border"
+              className="relative rounded-xl bg-background border border-border p-4 lg:p-5 flex flex-col items-center justify-center min-h-[140px]"
             >
               <div className="flex-1 flex items-center justify-center w-full">
                 <img
@@ -61,13 +61,12 @@ export function FinanceSection() {
                   height={512}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-16 lg:max-h-20 w-auto object-contain grayscale group-hover:grayscale-0 transition-all"
+                  className="max-h-16 lg:max-h-20 w-auto object-contain"
                 />
               </div>
               <div className="mt-2 text-[10px] lg:text-xs text-muted-foreground text-center font-medium">
                 {b.name}
               </div>
-              <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-gold opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           ))}
         </div>
