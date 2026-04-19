@@ -91,13 +91,17 @@ export function FinanceSection() {
           <Button
             asChild
             size="lg"
-            className="bg-gold hover:bg-gold/90 text-gold-foreground font-semibold shadow-gold"
+            className="bg-success hover:bg-success/90 text-white font-semibold shadow-success"
           >
             <Link to="/contact">
               <Calculator className="mr-2 w-4 h-4" /> Check Eligibility
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-ink/30">
+          <Button
+            asChild
+            size="lg"
+            className="bg-brand hover:bg-brand/90 text-white font-semibold shadow-brand"
+          >
             <a href={buildWhatsAppUrl("finance")} target="_blank" rel="noopener noreferrer">
               Talk to Loan Expert
             </a>
