@@ -1,18 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone, Instagram, Facebook, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
     <footer className="bg-ink text-white/90">
       <div className="container-px mx-auto max-w-7xl py-16 grid gap-12 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-white text-ink grid place-items-center font-display font-bold text-xl">
-              S
-            </div>
-            <div className="font-display font-bold text-xl">
-              Single<span className="text-gold">Stop</span>
-            </div>
+          <div className="mb-4 inline-flex bg-white rounded-lg p-3 shadow-soft">
+            <img
+              src={logo}
+              alt="Single Stop Building Solutions"
+              className="h-12 w-auto object-contain"
+              width={200}
+              height={48}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <p className="text-sm text-white/60 leading-relaxed">
             Jaipur's premium end-to-end construction company. Design, build, finance
