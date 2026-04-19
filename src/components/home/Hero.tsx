@@ -52,9 +52,15 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="lg:col-span-7"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur text-xs font-medium tracking-wider uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-            Jaipur's Premium Construction Brand
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur text-xs font-medium tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+              Jaipur's Premium Construction Brand
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-danger/15 border border-danger/40 text-danger text-[10px] font-bold tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-danger animate-pulse" />
+              Jaipur Only
+            </div>
           </div>
           <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
             Build smarter.
@@ -95,7 +101,7 @@ export function Hero() {
                 key={b.label}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-xs font-medium"
               >
-                <b.icon className="w-3.5 h-3.5 text-gold" />
+                <b.icon className="w-3.5 h-3.5 text-success" />
                 {b.label}
               </div>
             ))}
