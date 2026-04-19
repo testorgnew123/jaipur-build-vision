@@ -74,7 +74,7 @@ function ProjectDetail() {
               <img src={p.gallery[0]} alt={p.title} className="w-full h-full object-cover" fetchPriority="high" />
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
-              {p.gallery.slice(1, 4).map((g, i) => (
+              {p.gallery.slice(1, 4).map((g: string, i: number) => (
                 <div key={i} className="rounded-xl overflow-hidden aspect-[4/3] lg:aspect-auto">
                   <img src={g} alt="" loading="lazy" className="w-full h-full object-cover" />
                 </div>
@@ -99,7 +99,7 @@ function ProjectDetail() {
 
             <h2 className="mt-10 font-display text-2xl font-bold">Highlights</h2>
             <ul className="mt-4 grid sm:grid-cols-2 gap-2 text-sm">
-              {p.highlights.map((h) => (
+              {p.highlights.map((h: string) => (
                 <li key={h} className="flex gap-2 text-white/80"><span className="text-gold">✓</span> {h}</li>
               ))}
             </ul>
@@ -115,7 +115,7 @@ function ProjectDetail() {
           <aside className="lg:sticky lg:top-28 self-start space-y-4">
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
               <div className="grid grid-cols-2 gap-4">
-                {p.specs.map((s) => (
+                {p.specs.map((s: { label: string; value: string }) => (
                   <div key={s.label}>
                     <div className="text-xs text-white/50 uppercase tracking-wider">{s.label}</div>
                     <div className="font-display font-bold text-lg mt-0.5">{s.value}</div>

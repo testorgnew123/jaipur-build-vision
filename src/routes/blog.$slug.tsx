@@ -69,7 +69,7 @@ function PostPage() {
             <ArrowLeft className="w-4 h-4" /> All articles
           </Link>
           <div className="mt-6 flex flex-wrap gap-2">
-            {p.tags.map((t) => (
+            {p.tags.map((t: string) => (
               <span key={t} className="px-2.5 py-1 rounded-full bg-gold-soft text-gold text-xs font-bold uppercase tracking-wider">{t}</span>
             ))}
           </div>
