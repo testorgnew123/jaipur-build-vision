@@ -47,6 +47,13 @@ export const Route = createRootRoute({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@SingleStop" },
       { name: "theme-color", content: "#111111" },
+      { property: "og:title", content: "SingleStop — Premium Construction Company in Jaipur" },
+      { name: "twitter:title", content: "SingleStop — Premium Construction Company in Jaipur" },
+      { name: "description", content: "Premium Jaipur construction company website offering end-to-end services from design to maintenance." },
+      { property: "og:description", content: "Premium Jaipur construction company website offering end-to-end services from design to maintenance." },
+      { name: "twitter:description", content: "Premium Jaipur construction company website offering end-to-end services from design to maintenance." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/586fa348-c23b-4083-8f37-ed19b1707294/id-preview-5f8bb3ac--6a062d22-95b2-4d2d-a94d-d6c4c9c45f35.lovable.app-1776585855466.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/586fa348-c23b-4083-8f37-ed19b1707294/id-preview-5f8bb3ac--6a062d22-95b2-4d2d-a94d-d6c4c9c45f35.lovable.app-1776585855466.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
