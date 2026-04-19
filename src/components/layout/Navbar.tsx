@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -30,13 +31,15 @@ export function Navbar() {
       )}
     >
       <div className="container-px mx-auto max-w-7xl flex items-center justify-between h-16 lg:h-20">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-lg bg-primary text-primary-foreground grid place-items-center font-display font-bold text-lg shadow-soft">
-            S
-          </div>
-          <div className="font-display font-bold text-lg tracking-tight">
-            Single<span className="text-gold">Stop</span>
-          </div>
+        <Link to="/" className="flex items-center gap-2 group" aria-label="Single Stop — Home">
+          <img
+            src={logo}
+            alt="Single Stop Building Solutions"
+            className="h-9 lg:h-11 w-auto object-contain"
+            width={180}
+            height={44}
+            fetchPriority="high"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
