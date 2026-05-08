@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, useLocation } from "@tanstack/react-router";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
@@ -36,6 +36,8 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.startsWith("/admin");
   return (
     <>
       <script
@@ -43,16 +45,16 @@ function RootComponent() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       <Analytics />
-      <Navbar />
-      <main className="min-h-screen">
+      {!isAdmin && <Navbar />}
+      <main className={isAdmin ? "" : "min-h-screen"}>
         <Outlet />
       </main>
-      <Footer />
-      <WhatsAppFAB />
-      <MobileStickyCTA />
-      <ExitIntentDialog />
+      {!isAdmin && <Footer />}
+      {!isAdmin && <WhatsAppFAB />}
+      {!isAdmin && <MobileStickyCTA />}
+      {!isAdmin && <ExitIntentDialog />}
       <Toaster richColors position="top-center" />
-      <div className="lg:hidden h-16" aria-hidden />
+      {!isAdmin && <div className="lg:hidden h-16" aria-hidden />}
     </>
   );
 }

@@ -1,32 +1,32 @@
 const examples = [
   {
     title: "3BHK Residence — Vaishali Nagar",
-    area: "2,400 sq.ft",
-    total: "₹ 78 Lakh",
+    area: "2,200 sq.ft",
+    total: "₹ 45 Lakh",
     chips: [
-      { label: "Civil", value: "₹ 42 L" },
-      { label: "Finishing", value: "₹ 22 L" },
-      { label: "Interior", value: "₹ 14 L" },
+      { label: "Civil", value: "₹ 26 L" },
+      { label: "Finishing", value: "₹ 13 L" },
+      { label: "Interior", value: "₹ 6 L" },
     ],
   },
   {
     title: "4BHK Villa — Mansarovar",
     area: "4,200 sq.ft",
-    total: "₹ 1.6 Cr",
+    total: "₹ 1.05 Cr",
     chips: [
-      { label: "Civil", value: "₹ 78 L" },
-      { label: "Finishing", value: "₹ 48 L" },
-      { label: "Interior", value: "₹ 34 L" },
+      { label: "Civil", value: "₹ 60 L" },
+      { label: "Finishing", value: "₹ 30 L" },
+      { label: "Interior", value: "₹ 15 L" },
     ],
   },
   {
     title: "Duplex — Jagatpura",
     area: "3,200 sq.ft",
-    total: "₹ 1.05 Cr",
+    total: "₹ 72 Lakh",
     chips: [
-      { label: "Civil", value: "₹ 56 L" },
-      { label: "Finishing", value: "₹ 30 L" },
-      { label: "Interior", value: "₹ 19 L" },
+      { label: "Civil", value: "₹ 40 L" },
+      { label: "Finishing", value: "₹ 22 L" },
+      { label: "Interior", value: "₹ 10 L" },
     ],
   },
 ];
@@ -45,11 +45,11 @@ export function ProjectCosts() {
           </p>
         </div>
 
-        <div className="mt-12 grid lg:grid-cols-3 gap-5">
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {examples.map((e) => (
             <div
               key={e.title}
-              className="rounded-2xl border border-border bg-card p-7 hover:shadow-elegant hover:border-gold/40 transition-all"
+              className="rounded-2xl border border-border bg-card p-6 lg:p-7 hover:shadow-elegant hover:border-gold/40 transition-all"
             >
               <div className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
                 {e.area}
@@ -72,6 +72,10 @@ export function ProjectCosts() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 rounded-xl bg-amber-50 border border-amber-200 px-5 py-4 text-center text-sm text-amber-800">
+          We build on <strong>residential plots only</strong> — we do not work on apartments or take renovation projects.
         </div>
       </div>
     </section>

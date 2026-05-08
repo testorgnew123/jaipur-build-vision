@@ -1,13 +1,31 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { getPost, posts } from "@/data/posts";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+interface Post {
+  slug: string;
+  title: string;
+  excerpt: string;
+  cover: string;
+  author: string;
+  published_at: string;
+  reading_time: string;
+  tags: string[];
+  content: string;
+}
+
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const post = getPost(params.slug);
-    if (!post) throw notFound();
-    return { post };
+  loader: async ({ params }) => {
+    const [postRes, allRes] = await Promise.all([
+      fetch(`/api/posts/${params.slug}`),
+      fetch("/api/posts"),
+    ]);
+    if (postRes.status === 404) throw notFound();
+    if (!postRes.ok) throw new Error("Failed to load post");
+    const post = (await postRes.json()) as Post;
+    const allPosts = allRes.ok ? ((await allRes.json()) as Post[]) : [];
+    const related = allPosts.filter((p) => p.slug !== params.slug).slice(0, 3);
+    return { post, related };
   },
   errorComponent: ({ error, reset }) => {
     const router = useRouter();
@@ -34,8 +52,7 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function PostPage() {
-  const { post: p } = Route.useLoaderData();
-  const related = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
+  const { post: p, related } = Route.useLoaderData();
 
   return (
     <>
@@ -53,8 +70,8 @@ function PostPage() {
           <p className="mt-5 text-lg text-muted-foreground">{p.excerpt}</p>
           <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
             <span>By <span className="font-semibold text-foreground">{p.author}</span></span>
-            <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> {new Date(p.publishedAt).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
-            <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {p.readingTime}</span>
+            <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> {new Date(p.published_at).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
+            <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {p.reading_time}</span>
           </div>
         </div>
 

@@ -2,14 +2,6 @@ import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useUTM } from "@/hooks/useUTM";
 import { toast } from "sonner";
 import { CheckCircle2 } from "lucide-react";
@@ -18,14 +10,14 @@ type Props = {
   variant?: "light" | "dark";
   source?: string;
   compact?: boolean;
-  showMessage?: boolean;
+  siteVisit?: boolean;
 };
 
 export function LeadForm({
   variant = "light",
   source = "general",
   compact = false,
-  showMessage = true,
+  siteVisit = false,
 }: Props) {
   const utm = useUTM();
   const [submitted, setSubmitted] = useState(false);
@@ -41,7 +33,10 @@ export function LeadForm({
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-      toast.success("Thank you! Our expert will call you within 30 minutes.");
+      const msg = siteVisit
+        ? "Visit request received! We'll call within 30 minutes."
+        : "Thank you! Our expert will call you within 30 minutes.";
+      toast.success(msg);
     }, 600);
   }
 
@@ -49,7 +44,9 @@ export function LeadForm({
     return (
       <div className="text-center py-8">
         <CheckCircle2 className="w-12 h-12 text-gold mx-auto mb-3" />
-        <h3 className="font-display font-bold text-xl">Request received</h3>
+        <h3 className="font-display font-bold text-xl">
+          {siteVisit ? "Visit request received!" : "Request received"}
+        </h3>
         <p className="text-sm text-muted-foreground mt-1">
           Our consultant will reach out within 30 minutes.
         </p>
@@ -64,52 +61,30 @@ export function LeadForm({
       : "";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
-      <div className={compact ? "grid grid-cols-1 gap-3" : "grid sm:grid-cols-2 gap-3"}>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className={compact || siteVisit ? "grid grid-cols-1 gap-4" : "grid sm:grid-cols-2 gap-4"}>
         <div className="space-y-1.5">
           <Label htmlFor="name" className={labelCls}>Name</Label>
-          <Input id="name" name="name" required placeholder="Your full name" className={inputCls} />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="phone" className={labelCls}>Phone</Label>
-          <Input id="phone" name="phone" required type="tel" placeholder="+91 98xxx xxxxx" className={inputCls} />
-        </div>
-      </div>
-
-      <div className={compact ? "grid grid-cols-1 gap-3" : "grid sm:grid-cols-2 gap-3"}>
-        <div className="space-y-1.5">
-          <Label htmlFor="email" className={labelCls}>Email</Label>
-          <Input id="email" name="email" type="email" placeholder="you@example.com" className={inputCls} />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="project_type" className={labelCls}>Project type</Label>
-          <Select name="project_type" defaultValue="residential">
-            <SelectTrigger className={inputCls}>
-              <SelectValue placeholder="Select" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="residential">Residential</SelectItem>
-              <SelectItem value="villa">Villa</SelectItem>
-              <SelectItem value="commercial">Commercial</SelectItem>
-              <SelectItem value="renovation">Renovation</SelectItem>
-              <SelectItem value="interior">Interior</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
-      {showMessage && (
-        <div className="space-y-1.5">
-          <Label htmlFor="message" className={labelCls}>Message (optional)</Label>
-          <Textarea
-            id="message"
-            name="message"
-            rows={3}
-            placeholder="Tell us about your plot, budget, timeline…"
-            className={inputCls}
+          <Input
+            id="name"
+            name="name"
+            required
+            placeholder="Your full name"
+            className={`h-11 ${inputCls}`}
           />
         </div>
-      )}
+        <div className="space-y-1.5">
+          <Label htmlFor="phone" className={labelCls}>Mobile number</Label>
+          <Input
+            id="phone"
+            name="phone"
+            required
+            type="tel"
+            placeholder="+91 98xxx xxxxx"
+            className={`h-11 ${inputCls}`}
+          />
+        </div>
+      </div>
 
       {/* Hidden UTM + tracking fields */}
       <input type="hidden" name="source" value={source} />
@@ -126,12 +101,16 @@ export function LeadForm({
       <Button
         type="submit"
         disabled={loading}
-        className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-semibold shadow-gold"
+        className="w-full h-11 bg-gold hover:bg-gold/90 text-gold-foreground font-semibold shadow-gold"
       >
-        {loading ? "Sending…" : "Get Free Consultation"}
+        {loading
+          ? "Sending…"
+          : siteVisit
+          ? "Request Site Visit"
+          : "Get Free Consultation"}
       </Button>
       <p className={`text-xs text-center ${variant === "dark" ? "text-white/60" : "text-muted-foreground"}`}>
-        Replies within 30 minutes. No spam, ever.
+        We'll call within 30 minutes. No spam, ever.
       </p>
     </form>
   );

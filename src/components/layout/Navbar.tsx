@@ -14,6 +14,7 @@ const links = [
   { to: "/pricing", label: "Pricing" },
   { to: "/live-tracking", label: "Live Tracking" },
   { to: "/blog", label: "Blog" },
+  { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -26,8 +27,9 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        "bg-background/80 backdrop-blur-xl border-b border-border/60",
-        isHome && "bg-background/70",
+        isHome
+          ? "bg-white border-b border-border/60"
+          : "bg-background/80 backdrop-blur-xl border-b border-border/60",
       )}
     >
       <div className="container-px mx-auto max-w-7xl flex items-center justify-between h-16 lg:h-20">

@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { posts } from "@/data/posts";
 import { Calendar, Clock } from "lucide-react";
+
+interface Post {
+  slug: string;
+  title: string;
+  excerpt: string;
+  cover: string;
+  published_at: string;
+  reading_time: string;
+  tags: string[];
+}
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -11,10 +20,16 @@ export const Route = createFileRoute("/blog")({
       { property: "og:description", content: "Construction insights from Jaipur's premium builder." },
     ],
   }),
+  loader: async () => {
+    const res = await fetch("/api/posts");
+    if (!res.ok) throw new Error("Failed to load posts");
+    return { posts: (await res.json()) as Post[] };
+  },
   component: BlogPage,
 });
 
 function BlogPage() {
+  const { posts } = Route.useLoaderData();
   return (
     <>
       <section className="pt-32 pb-12 lg:pt-40 bg-muted/40">

@@ -41,6 +41,7 @@ export function Footer() {
             <li><Link to="/about" className="hover:text-gold">About Us</Link></li>
             <li><Link to="/projects" className="hover:text-gold">Projects</Link></li>
             <li><Link to="/blog" className="hover:text-gold">Blog</Link></li>
+            <li><Link to="/careers" className="hover:text-gold">Careers</Link></li>
             <li><Link to="/contact" className="hover:text-gold">Contact</Link></li>
           </ul>
         </div>
@@ -48,10 +49,10 @@ export function Footer() {
         <div>
           <h4 className="font-display font-semibold text-white mb-4">Services</h4>
           <ul className="space-y-2 text-sm text-white/70">
-            <li><Link to="/services" className="hover:text-gold">Architectural Design</Link></li>
+            <li><Link to="/services" className="hover:text-gold">Planning & Architecture</Link></li>
             <li><Link to="/services" className="hover:text-gold">Residential Construction</Link></li>
-            <li><Link to="/services" className="hover:text-gold">Commercial Projects</Link></li>
-            <li><Link to="/services" className="hover:text-gold">Interior &amp; Renovation</Link></li>
+            <li><Link to="/services" className="hover:text-gold">Commercial Construction</Link></li>
+            <li><Link to="/services" className="hover:text-gold">Interior Design</Link></li>
             <li><Link to="/live-tracking" className="hover:text-gold">Live Site Tracking</Link></li>
           </ul>
         </div>

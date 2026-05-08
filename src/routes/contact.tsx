@@ -31,10 +31,10 @@ function ContactPage() {
 
         <div className="mt-14 grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3 rounded-2xl bg-card border border-border p-7 lg:p-9 shadow-soft">
-            <h2 className="font-display text-2xl font-bold">Tell us about your project</h2>
-            <p className="text-sm text-muted-foreground mt-1">A senior consultant will call within 30 minutes.</p>
+            <h2 className="font-display text-2xl font-bold">Request a Site Visit</h2>
+            <p className="text-sm text-muted-foreground mt-1">We'll call to schedule your visit within 30 minutes.</p>
             <div className="mt-6">
-              <LeadForm source="contact" />
+              <LeadForm source="contact" siteVisit />
             </div>
           </div>
 

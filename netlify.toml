@@ -2,10 +2,32 @@
   command = "npm run build"
   publish = "dist"
 
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  publish = "dist"
+
 [build.environment]
   NODE_VERSION = "20"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/posts/*"
+  to = "/.netlify/functions/posts-slug"
   status = 200
+
+[[redirects]]
+  from = "/api/visits/*"
+  to = "/.netlify/functions/visits-id"
+  status = 200
+
+[[redirects]]
+  from = "/api/users/*"
+  to = "/.netlify/functions/users-id"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+

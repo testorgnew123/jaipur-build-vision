@@ -2,17 +2,16 @@ import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/home/Hero";
 import { TrustStats } from "@/components/home/TrustStats";
-import { TrustLogos } from "@/components/home/TrustLogos";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { WhySingleStop } from "@/components/home/WhySingleStop";
 import { CTABand } from "@/components/home/CTABand";
 import { PricingPackages } from "@/components/home/PricingPackages";
+import { PriceCalculator } from "@/components/home/PriceCalculator";
 import { FinanceSection } from "@/components/home/FinanceSection";
 import { ProjectCosts } from "@/components/home/ProjectCosts";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { LiveTrackingUSP } from "@/components/home/LiveTrackingUSP";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
-import { FounderTeam } from "@/components/home/FounderTeam";
 import { GoogleReviews } from "@/components/home/GoogleReviews";
 import { JaipurExpertise } from "@/components/home/JaipurExpertise";
 import { NRISection } from "@/components/home/NRISection";
@@ -53,7 +52,6 @@ function Index() {
     <>
       <Hero />
       <TrustStats />
-      <TrustLogos />
       <ServicesGrid />
       <WhySingleStop />
       <CTABand
@@ -65,6 +63,7 @@ function Index() {
         whatsappContext="hero"
       />
       <PricingPackages />
+      <PriceCalculator />
       <FinanceSection />
       <ProjectCosts />
       <CTABand
@@ -82,12 +81,11 @@ function Index() {
       </Suspense>
       <CTABand
         title="Want results like this?"
-        subtitle="Renovate your home with Jaipur's most trusted team."
-        primaryLabel="Plan My Renovation"
+        subtitle="Build your dream home with Jaipur's most trusted team."
+        primaryLabel="Start My Build"
         whatsappContext="general"
       />
       <ProcessTimeline />
-      <FounderTeam />
       <GoogleReviews />
       <Suspense fallback={<div className="h-[60vh] bg-muted/40" />}>
         <VideoTestimonials />
