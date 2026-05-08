@@ -3,11 +3,13 @@
 /api/posts        /.netlify/functions/posts        200
 /api/visits       /.netlify/functions/visits       200
 /api/users        /.netlify/functions/users        200
+/api/jobs         /.netlify/functions/jobs         200
 
 # Wildcard item routes
 /api/posts/*      /.netlify/functions/posts-slug   200
 /api/visits/*     /.netlify/functions/visits-id    200
 /api/users/*      /.netlify/functions/users-id     200
+/api/jobs/*       /.netlify/functions/jobs-id      200
 
 # SPA fallback — must be last
 /*                /index.html                      200

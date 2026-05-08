@@ -1,7 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { MapPin, Clock, ArrowRight, Zap, TrendingUp, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+
+interface Job {
+  id: number;
+  title: string;
+  type: string;
+  experience: string;
+  location: string;
+  description: string;
+  skills: string[];
+  is_active: boolean;
+}
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -14,37 +26,6 @@ export const Route = createFileRoute("/careers")({
   }),
   component: CareersPage,
 });
-
-const roles = [
-  {
-    title: "Site Engineer",
-    type: "Full-time",
-    experience: "2–5 years",
-    desc: "Oversee day-to-day construction activities on residential sites. Coordinate with vendors, ensure quality standards, and report progress via our live dashboard.",
-    skills: ["Civil Engineering", "Site Supervision", "AutoCAD", "MS Project"],
-  },
-  {
-    title: "Architect",
-    type: "Full-time",
-    experience: "3–7 years",
-    desc: "Design bespoke residential and commercial projects from concept to construction drawings. Vastu knowledge preferred. Work with a collaborative in-house team.",
-    skills: ["Revit / AutoCAD", "3D Rendering", "Vastu", "Statutory Drawings"],
-  },
-  {
-    title: "Interior Designer",
-    type: "Full-time",
-    experience: "2–5 years",
-    desc: "Create stunning interiors for premium homes. Handle client briefs, material selection, modular kitchen design, and on-site coordination.",
-    skills: ["SketchUp / 3ds Max", "Material Sourcing", "Space Planning", "Client Management"],
-  },
-  {
-    title: "Business Development Executive",
-    type: "Full-time",
-    experience: "1–4 years",
-    desc: "Generate and manage leads, conduct site visits, and convert prospects. Join a high-growth sales team with strong incentives and a great brand to sell.",
-    skills: ["Real Estate / Construction Sales", "CRM", "Lead Generation", "Communication"],
-  },
-];
 
 const perks = [
   {
@@ -68,6 +49,17 @@ const heroImg = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?au
 
 function CareersPage() {
   const waBase = buildWhatsAppUrl("contact");
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/jobs")
+      .then((r) => (r.ok ? r.json() : []))
+      .then((data: Job[]) => setJobs(Array.isArray(data) ? data : []))
+      .catch(() => setJobs([]))
+      .finally(() => setLoading(false));
+  }, []);
+
   function applyUrl(role: string) {
     return waBase + encodeURIComponent(`\nI'd like to apply for the ${role} position at SingleStop.`);
   }
@@ -132,49 +124,62 @@ function CareersPage() {
             </p>
           </div>
 
-          <div className="space-y-5">
-            {roles.map((r) => (
-              <div
-                key={r.title}
-                className="rounded-2xl bg-card border border-border p-6 lg:p-8 hover:border-gold/50 hover:shadow-elegant transition-all"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span className="px-2.5 py-1 rounded-full bg-gold-soft text-gold text-xs font-semibold">
-                        {r.type}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Clock className="w-3 h-3" /> {r.experience}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <MapPin className="w-3 h-3" /> Jaipur, Rajasthan
-                      </span>
-                    </div>
-                    <h3 className="font-display text-xl font-bold">{r.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {r.skills.map((skill) => (
-                        <span key={skill} className="px-2.5 py-1 rounded-full bg-muted text-xs font-medium text-foreground/80">
-                          {skill}
+          {loading ? (
+            <p className="text-center text-sm text-muted-foreground">Loading roles…</p>
+          ) : jobs.length === 0 ? (
+            <div className="rounded-2xl bg-card border border-border p-8 text-center">
+              <p className="font-display text-lg font-bold">No open roles right now</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                We're always interested in talented people. Send your CV and we'll be in touch.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-5">
+              {jobs.map((j) => (
+                <div
+                  key={j.id}
+                  className="rounded-2xl bg-card border border-border p-6 lg:p-8 hover:border-gold/50 hover:shadow-elegant transition-all"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="px-2.5 py-1 rounded-full bg-gold-soft text-gold text-xs font-semibold">
+                          {j.type}
                         </span>
-                      ))}
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <Clock className="w-3 h-3" /> {j.experience}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <MapPin className="w-3 h-3" /> {j.location}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-xl font-bold">{j.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{j.description}</p>
+                      {Array.isArray(j.skills) && j.skills.length > 0 && (
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {j.skills.map((skill) => (
+                            <span key={skill} className="px-2.5 py-1 rounded-full bg-muted text-xs font-medium text-foreground/80">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                  <div className="shrink-0">
-                    <Button
-                      asChild
-                      className="w-full sm:w-auto bg-ink text-white hover:bg-ink/90 h-11 px-6"
-                    >
-                      <a href={applyUrl(r.title)} target="_blank" rel="noopener noreferrer">
-                        Apply via WhatsApp
-                      </a>
-                    </Button>
+                    <div className="shrink-0">
+                      <Button
+                        asChild
+                        className="w-full sm:w-auto bg-ink text-white hover:bg-ink/90 h-11 px-6"
+                      >
+                        <a href={applyUrl(j.title)} target="_blank" rel="noopener noreferrer">
+                          Apply via WhatsApp
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className="mt-10 rounded-2xl bg-muted/60 border border-border p-7 text-center">
             <p className="font-display text-lg font-bold">Don't see your role?</p>

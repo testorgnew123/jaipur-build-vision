@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Building2, LayoutDashboard, CalendarCheck, FileText, Users, LogOut } from "lucide-react";
+import { Building2, LayoutDashboard, CalendarCheck, FileText, Users, Briefcase, LogOut } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { isSuperAdmin } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 const mainNav = [
   { to: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/admin/visits", label: "Visits", icon: CalendarCheck },
+  { to: "/admin/jobs", label: "Jobs", icon: Briefcase },
 ];
 
 const superAdminNav = [

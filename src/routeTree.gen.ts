@@ -26,10 +26,15 @@ import { Route as AdminVisitsRouteImport } from './routes/admin.visits'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminPostsRouteImport } from './routes/admin.posts'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminJobsRouteImport } from './routes/admin.jobs'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
+import { Route as AdminJobsIndexRouteImport } from './routes/admin.jobs.index'
 import { Route as AdminVisitsIdRouteImport } from './routes/admin.visits.$id'
 import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
 import { Route as AdminPostsIdRouteImport } from './routes/admin.posts.$id'
+import { Route as AdminJobsNewRouteImport } from './routes/admin.jobs.new'
+import { Route as AdminJobsIdRouteImport } from './routes/admin.jobs.$id'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -116,10 +121,25 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminJobsRoute = AdminJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AdminRoute,
+} as any)
+const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminPostsRoute,
+} as any)
+const AdminJobsIndexRoute = AdminJobsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminJobsRoute,
 } as any)
 const AdminVisitsIdRoute = AdminVisitsIdRouteImport.update({
   id: '/$id',
@@ -136,6 +156,16 @@ const AdminPostsIdRoute = AdminPostsIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => AdminPostsRoute,
 } as any)
+const AdminJobsNewRoute = AdminJobsNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => AdminJobsRoute,
+} as any)
+const AdminJobsIdRoute = AdminJobsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AdminJobsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -149,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRouteWithChildren
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/jobs': typeof AdminJobsRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
   '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/users': typeof AdminUsersRoute
@@ -156,9 +187,13 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/jobs/$id': typeof AdminJobsIdRoute
+  '/admin/jobs/new': typeof AdminJobsNewRoute
   '/admin/posts/$id': typeof AdminPostsIdRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/visits/$id': typeof AdminVisitsIdRoute
+  '/admin/jobs/': typeof AdminJobsIndexRoute
+  '/admin/posts/': typeof AdminPostsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -172,15 +207,18 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/users': typeof AdminUsersRoute
   '/admin/visits': typeof AdminVisitsRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/jobs/$id': typeof AdminJobsIdRoute
+  '/admin/jobs/new': typeof AdminJobsNewRoute
   '/admin/posts/$id': typeof AdminPostsIdRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/visits/$id': typeof AdminVisitsIdRoute
+  '/admin/jobs': typeof AdminJobsIndexRoute
+  '/admin/posts': typeof AdminPostsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -195,6 +233,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRouteWithChildren
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/jobs': typeof AdminJobsRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
   '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/users': typeof AdminUsersRoute
@@ -202,9 +241,13 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/jobs/$id': typeof AdminJobsIdRoute
+  '/admin/jobs/new': typeof AdminJobsNewRoute
   '/admin/posts/$id': typeof AdminPostsIdRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/visits/$id': typeof AdminVisitsIdRoute
+  '/admin/jobs/': typeof AdminJobsIndexRoute
+  '/admin/posts/': typeof AdminPostsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -220,6 +263,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/admin/dashboard'
+    | '/admin/jobs'
     | '/admin/login'
     | '/admin/posts'
     | '/admin/users'
@@ -227,9 +271,13 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/projects/$slug'
     | '/admin/'
+    | '/admin/jobs/$id'
+    | '/admin/jobs/new'
     | '/admin/posts/$id'
     | '/admin/posts/new'
     | '/admin/visits/$id'
+    | '/admin/jobs/'
+    | '/admin/posts/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -243,15 +291,18 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
-    | '/admin/posts'
     | '/admin/users'
     | '/admin/visits'
     | '/blog/$slug'
     | '/projects/$slug'
     | '/admin'
+    | '/admin/jobs/$id'
+    | '/admin/jobs/new'
     | '/admin/posts/$id'
     | '/admin/posts/new'
     | '/admin/visits/$id'
+    | '/admin/jobs'
+    | '/admin/posts'
   id:
     | '__root__'
     | '/'
@@ -265,6 +316,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/admin/dashboard'
+    | '/admin/jobs'
     | '/admin/login'
     | '/admin/posts'
     | '/admin/users'
@@ -272,9 +324,13 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/projects/$slug'
     | '/admin/'
+    | '/admin/jobs/$id'
+    | '/admin/jobs/new'
     | '/admin/posts/$id'
     | '/admin/posts/new'
     | '/admin/visits/$id'
+    | '/admin/jobs/'
+    | '/admin/posts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -411,12 +467,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/jobs': {
+      id: '/admin/jobs'
+      path: '/jobs'
+      fullPath: '/admin/jobs'
+      preLoaderRoute: typeof AdminJobsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/admin/posts/': {
+      id: '/admin/posts/'
+      path: '/'
+      fullPath: '/admin/posts/'
+      preLoaderRoute: typeof AdminPostsIndexRouteImport
+      parentRoute: typeof AdminPostsRoute
+    }
+    '/admin/jobs/': {
+      id: '/admin/jobs/'
+      path: '/'
+      fullPath: '/admin/jobs/'
+      preLoaderRoute: typeof AdminJobsIndexRouteImport
+      parentRoute: typeof AdminJobsRoute
     }
     '/admin/visits/$id': {
       id: '/admin/visits/$id'
@@ -439,17 +516,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsIdRouteImport
       parentRoute: typeof AdminPostsRoute
     }
+    '/admin/jobs/new': {
+      id: '/admin/jobs/new'
+      path: '/new'
+      fullPath: '/admin/jobs/new'
+      preLoaderRoute: typeof AdminJobsNewRouteImport
+      parentRoute: typeof AdminJobsRoute
+    }
+    '/admin/jobs/$id': {
+      id: '/admin/jobs/$id'
+      path: '/$id'
+      fullPath: '/admin/jobs/$id'
+      preLoaderRoute: typeof AdminJobsIdRouteImport
+      parentRoute: typeof AdminJobsRoute
+    }
   }
 }
+
+interface AdminJobsRouteChildren {
+  AdminJobsIdRoute: typeof AdminJobsIdRoute
+  AdminJobsNewRoute: typeof AdminJobsNewRoute
+  AdminJobsIndexRoute: typeof AdminJobsIndexRoute
+}
+
+const AdminJobsRouteChildren: AdminJobsRouteChildren = {
+  AdminJobsIdRoute: AdminJobsIdRoute,
+  AdminJobsNewRoute: AdminJobsNewRoute,
+  AdminJobsIndexRoute: AdminJobsIndexRoute,
+}
+
+const AdminJobsRouteWithChildren = AdminJobsRoute._addFileChildren(
+  AdminJobsRouteChildren,
+)
 
 interface AdminPostsRouteChildren {
   AdminPostsIdRoute: typeof AdminPostsIdRoute
   AdminPostsNewRoute: typeof AdminPostsNewRoute
+  AdminPostsIndexRoute: typeof AdminPostsIndexRoute
 }
 
 const AdminPostsRouteChildren: AdminPostsRouteChildren = {
   AdminPostsIdRoute: AdminPostsIdRoute,
   AdminPostsNewRoute: AdminPostsNewRoute,
+  AdminPostsIndexRoute: AdminPostsIndexRoute,
 }
 
 const AdminPostsRouteWithChildren = AdminPostsRoute._addFileChildren(
@@ -470,6 +579,7 @@ const AdminVisitsRouteWithChildren = AdminVisitsRoute._addFileChildren(
 
 interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminJobsRoute: typeof AdminJobsRouteWithChildren
   AdminLoginRoute: typeof AdminLoginRoute
   AdminPostsRoute: typeof AdminPostsRouteWithChildren
   AdminUsersRoute: typeof AdminUsersRoute
@@ -479,6 +589,7 @@ interface AdminRouteChildren {
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminJobsRoute: AdminJobsRouteWithChildren,
   AdminLoginRoute: AdminLoginRoute,
   AdminPostsRoute: AdminPostsRouteWithChildren,
   AdminUsersRoute: AdminUsersRoute,

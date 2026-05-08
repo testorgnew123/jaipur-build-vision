@@ -1,11 +1,10 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import { getStoredAuth, isSuperAdmin } from "@/lib/auth";
+import { getStoredAuth } from "@/lib/auth";
 
-export const Route = createFileRoute("/admin/posts")({
+export const Route = createFileRoute("/admin/jobs")({
   beforeLoad: () => {
     const auth = getStoredAuth();
     if (!auth) throw redirect({ to: "/admin/login" });
-    if (!isSuperAdmin(auth.user)) throw redirect({ to: "/admin/dashboard" });
   },
   component: () => <Outlet />,
 });

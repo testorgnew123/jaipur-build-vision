@@ -32,6 +32,11 @@
   to = "/.netlify/functions/users"
   status = 200
 
+[[redirects]]
+  from = "/api/jobs"
+  to = "/.netlify/functions/jobs"
+  status = 200
+
 # Wildcard item routes
 [[redirects]]
   from = "/api/posts/*"
@@ -46,6 +51,11 @@
 [[redirects]]
   from = "/api/users/*"
   to = "/.netlify/functions/users-id"
+  status = 200
+
+[[redirects]]
+  from = "/api/jobs/*"
+  to = "/.netlify/functions/jobs-id"
   status = 200
 
 # SPA fallback for production lives in public/_redirects so Netlify Dev
