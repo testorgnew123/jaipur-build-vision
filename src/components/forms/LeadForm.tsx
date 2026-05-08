@@ -13,6 +13,35 @@ type Props = {
   siteVisit?: boolean;
 };
 
+type FieldErrors = { name?: string; phone?: string };
+
+function validateName(raw: string): string | undefined {
+  const name = raw.trim();
+  if (!name) return "Name is required";
+  if (name.length < 2) return "Name must be at least 2 characters";
+  if (name.length > 80) return "Name is too long";
+  // Unicode letters (covers Hindi/Latin), space, hyphen, apostrophe, dot
+  if (!/^\p{L}[\p{L}\s.'’-]*$/u.test(name)) {
+    return "Name can only contain letters, spaces, hyphens, apostrophes, and dots";
+  }
+  return undefined;
+}
+
+function normalizePhone(raw: string): string {
+  let digits = raw.replace(/\D/g, "");
+  if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
+  else if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
+  return digits;
+}
+
+function validatePhone(raw: string): string | undefined {
+  if (!raw.trim()) return "Mobile number is required";
+  const local = normalizePhone(raw);
+  if (local.length !== 10) return "Enter a valid 10-digit mobile number";
+  if (!/^[6-9]/.test(local)) return "Indian mobile numbers start with 6, 7, 8, or 9";
+  return undefined;
+}
+
 export function LeadForm({
   variant = "light",
   source = "general",
@@ -22,22 +51,71 @@ export function LeadForm({
   const utm = useUTM();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleBlur(field: keyof FieldErrors, value: string) {
+    const err = field === "name" ? validateName(value) : validatePhone(value);
+    setErrors((prev) => ({ ...prev, [field]: err }));
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(true);
     const fd = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(fd.entries());
-    // eslint-disable-next-line no-console
-    console.log("[Lead]", { ...payload, ...utm, source, submitted_at: new Date().toISOString() });
-    setTimeout(() => {
-      setLoading(false);
+    const name = String(fd.get("name") ?? "");
+    const phone = String(fd.get("phone") ?? "");
+
+    const fieldErrors: FieldErrors = {
+      name: validateName(name),
+      phone: validatePhone(phone),
+    };
+    if (fieldErrors.name || fieldErrors.phone) {
+      setErrors(fieldErrors);
+      return;
+    }
+    setErrors({});
+    setLoading(true);
+
+    const meta = {
+      source,
+      utm_source: utm.utm_source ?? null,
+      utm_medium: utm.utm_medium ?? null,
+      utm_campaign: utm.utm_campaign ?? null,
+      utm_term: utm.utm_term ?? null,
+      utm_content: utm.utm_content ?? null,
+      gclid: utm.gclid ?? null,
+      fbclid: utm.fbclid ?? null,
+      page_url: utm.page_url ?? null,
+      referrer: utm.referrer ?? null,
+      submitted_at: new Date().toISOString(),
+    };
+
+    try {
+      const res = await fetch("/api/visits", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_name: name.trim(),
+          client_phone: `+91${normalizePhone(phone)}`,
+          notes: JSON.stringify(meta),
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Request failed (${res.status})`);
+      }
+
       setSubmitted(true);
       const msg = siteVisit
         ? "Visit request received! We'll call within 30 minutes."
         : "Thank you! Our expert will call you within 30 minutes.";
       toast.success(msg);
-    }, 600);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Something went wrong";
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -59,9 +137,10 @@ export function LeadForm({
     variant === "dark"
       ? "bg-white/10 border-white/20 text-white placeholder:text-white/50"
       : "";
+  const errorCls = "border-destructive focus-visible:ring-destructive";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} noValidate className="space-y-4">
       <div className={compact || siteVisit ? "grid grid-cols-1 gap-4" : "grid sm:grid-cols-2 gap-4"}>
         <div className="space-y-1.5">
           <Label htmlFor="name" className={labelCls}>Name</Label>
@@ -69,9 +148,18 @@ export function LeadForm({
             id="name"
             name="name"
             required
+            autoComplete="name"
+            maxLength={80}
             placeholder="Your full name"
-            className={`h-11 ${inputCls}`}
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            onBlur={(e) => handleBlur("name", e.currentTarget.value)}
+            onChange={() => errors.name && setErrors((p) => ({ ...p, name: undefined }))}
+            className={`h-11 ${inputCls} ${errors.name ? errorCls : ""}`}
           />
+          {errors.name && (
+            <p id="name-error" className="text-xs text-destructive">{errors.name}</p>
+          )}
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="phone" className={labelCls}>Mobile number</Label>
@@ -80,23 +168,21 @@ export function LeadForm({
             name="phone"
             required
             type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            maxLength={20}
             placeholder="+91 98xxx xxxxx"
-            className={`h-11 ${inputCls}`}
+            aria-invalid={!!errors.phone}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
+            onBlur={(e) => handleBlur("phone", e.currentTarget.value)}
+            onChange={() => errors.phone && setErrors((p) => ({ ...p, phone: undefined }))}
+            className={`h-11 ${inputCls} ${errors.phone ? errorCls : ""}`}
           />
+          {errors.phone && (
+            <p id="phone-error" className="text-xs text-destructive">{errors.phone}</p>
+          )}
         </div>
       </div>
-
-      {/* Hidden UTM + tracking fields */}
-      <input type="hidden" name="source" value={source} />
-      <input type="hidden" name="utm_source" value={utm.utm_source ?? ""} />
-      <input type="hidden" name="utm_medium" value={utm.utm_medium ?? ""} />
-      <input type="hidden" name="utm_campaign" value={utm.utm_campaign ?? ""} />
-      <input type="hidden" name="utm_term" value={utm.utm_term ?? ""} />
-      <input type="hidden" name="utm_content" value={utm.utm_content ?? ""} />
-      <input type="hidden" name="gclid" value={utm.gclid ?? ""} />
-      <input type="hidden" name="fbclid" value={utm.fbclid ?? ""} />
-      <input type="hidden" name="page_url" value={utm.page_url ?? ""} />
-      <input type="hidden" name="referrer" value={utm.referrer ?? ""} />
 
       <Button
         type="submit"

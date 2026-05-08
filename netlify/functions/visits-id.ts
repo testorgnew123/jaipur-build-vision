@@ -6,7 +6,7 @@ export const handler: Handler = async (event) => {
   if (event.httpMethod === "OPTIONS") return optionsResponse("GET, PATCH, DELETE");
 
   const id = event.path.split("/").pop();
-  if (!id) return cors({ error: "ID required" }, 400);
+  if (!id || !/^\d+$/.test(id)) return cors({ error: "Valid numeric ID required" }, 400);
 
   try {
     if (event.httpMethod === "GET") {

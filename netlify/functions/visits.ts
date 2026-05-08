@@ -17,10 +17,27 @@ export const handler: Handler = async (event) => {
 
     if (event.httpMethod === "POST") {
       const { client_name, client_phone, notes } = JSON.parse(event.body || "{}");
-      if (!client_name || !client_phone) return cors({ error: "Name and phone required" }, 400);
+
+      const name = typeof client_name === "string" ? client_name.trim() : "";
+      if (name.length < 2 || name.length > 80) {
+        return cors({ error: "Name must be 2–80 characters" }, 400);
+      }
+      if (!/^\p{L}[\p{L}\s.'’-]*$/u.test(name)) {
+        return cors({ error: "Name contains invalid characters" }, 400);
+      }
+
+      const rawPhone = typeof client_phone === "string" ? client_phone : "";
+      let digits = rawPhone.replace(/\D/g, "");
+      if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
+      else if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
+      if (digits.length !== 10 || !/^[6-9]/.test(digits)) {
+        return cors({ error: "Enter a valid 10-digit Indian mobile number" }, 400);
+      }
+      const phone = `+91${digits}`;
+
       const rows = await sql`
         INSERT INTO scheduled_visits (client_name, client_phone, notes)
-        VALUES (${client_name}, ${client_phone}, ${notes ?? null})
+        VALUES (${name}, ${phone}, ${notes ?? null})
         RETURNING *
       `;
       return cors(rows[0], 201);
