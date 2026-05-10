@@ -2,21 +2,21 @@ import { Linkedin, Award } from "lucide-react";
 
 const team = [
   {
-    name: "Rohit Sharma",
-    role: "Founder & Principal Architect",
-    bio: "B.Arch (CEPT), 14+ years. Led 100+ residential and commercial projects across Jaipur.",
+    name: "Neeraj Singhal",
+    role: "Founder",
+    bio: "Founder of Single Stop Building Solutions Pvt Ltd, focused on organized, transparent, and accountable building solutions.",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Anjali Mehta",
-    role: "Head of Design",
-    bio: "M.Des. Specialist in luxury interiors and Vastu-compliant modern homes.",
+    name: "Design Team",
+    role: "Planning & Interiors",
+    bio: "Architectural planning, structural coordination, interiors, and finishing support for complete project delivery.",
     img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Vikas Choudhary",
-    role: "Head of Construction",
-    bio: "Civil engineer with 18+ years on Jaipur sites. Safety-first, deadline-obsessed.",
+    name: "Execution Team",
+    role: "Construction & PMC",
+    bio: "Site execution, project management consultancy, quality checks, and day-to-day coordination.",
     img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
   },
 ];
@@ -60,7 +60,7 @@ export function FounderTeam() {
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.bio}</p>
                 {i === 0 && (
                   <div className="mt-4 inline-flex items-center gap-1.5 text-xs text-gold font-semibold">
-                    <Award className="w-3.5 h-3.5" /> IIID Award 2023
+                    <Award className="w-3.5 h-3.5" /> Founder
                   </div>
                 )}
               </div>

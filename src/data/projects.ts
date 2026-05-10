@@ -50,7 +50,7 @@ export const projects: Project[] = [
       { label: "Parking", value: "3 cars" },
     ],
     quote: {
-      text: "SingleStop turned our dream into a precision-built reality. The transparency was unmatched.",
+      text: "Single Stop Building Solutions Pvt Ltd turned our dream into a precision-built reality. The coordination was unmatched.",
       author: "Mr. & Mrs. Agarwal, Owners",
     },
   },

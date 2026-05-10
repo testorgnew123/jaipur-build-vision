@@ -1,4 +1,4 @@
-# Exact API routes — must come before wildcards
+# Exact API routes - must come before wildcards
 /api/auth         /.netlify/functions/auth         200
 /api/posts        /.netlify/functions/posts        200
 /api/visits       /.netlify/functions/visits       200
@@ -11,5 +11,14 @@
 /api/users/*      /.netlify/functions/users-id     200
 /api/jobs/*       /.netlify/functions/jobs-id      200
 
-# SPA fallback — must be last
+# Vite dev server modules. Netlify Dev applies this file locally too, so these
+# must pass through before the SPA fallback or JS module requests receive HTML.
+/@vite/*          /@vite/:splat                    200
+/@react-refresh   /@react-refresh                  200
+/@id/*            /@id/:splat                      200
+/@fs/*            /@fs/:splat                      200
+/src/*            /src/:splat                      200
+/node_modules/*   /node_modules/:splat             200
+
+# SPA fallback - must be last
 /*                /index.html                      200

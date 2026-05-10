@@ -1,11 +1,10 @@
 const steps = [
-  { n: "01", title: "Discovery Call", desc: "Free 30-min consultation. Understand your needs, plot, and budget." },
-  { n: "02", title: "Design & Quote", desc: "3D designs, material samples, locked transparent quote." },
-  { n: "03", title: "Approvals", desc: "JDA, structural, RERA — we handle the paperwork." },
-  { n: "04", title: "Site Mobilisation", desc: "Senior PM, safety setup, material staging." },
-  { n: "05", title: "Build", desc: "Daily progress, weekly walkthroughs, live dashboard updates." },
-  { n: "06", title: "Finishing", desc: "Painting, fittings, interior, landscaping." },
-  { n: "07", title: "Handover & Warranty", desc: "Snagging, handover ceremony, 10-year structural warranty." },
+  { n: "01", title: "Discovery Call", desc: "Free 30-min consultation to understand your needs, site, and budget." },
+  { n: "02", title: "Planning & Quote", desc: "Architectural and structural planning with a clear project scope." },
+  { n: "03", title: "Site Mobilisation", desc: "Senior PM, safety setup, team alignment, and material staging." },
+  { n: "04", title: "Build", desc: "Coordinated construction with regular progress updates and quality checks." },
+  { n: "05", title: "Finishing", desc: "Painting, fittings, interiors, and final finishing details." },
+  { n: "06", title: "Handover & Support", desc: "Snagging, handover, and after-service support for your project." },
 ];
 
 export function ProcessTimeline() {
@@ -15,11 +14,11 @@ export function ProcessTimeline() {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Our process</p>
           <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight">
-            Seven steps. <span className="text-gold">Total clarity.</span>
+            Six steps. <span className="text-gold">Total clarity.</span>
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {steps.map((s) => (
             <div
               key={s.n}

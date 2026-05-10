@@ -7,9 +7,9 @@ import { Calculator } from "lucide-react";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Construction Pricing in Jaipur — SingleStop Packages" },
+      { title: "Construction Pricing in Jaipur - Single Stop Building Solutions Pvt Ltd Packages" },
       { name: "description", content: "Transparent construction packages from ₹1,650/sq.ft. Essential, Signature and Luxe options with full inclusion lists." },
-      { property: "og:title", content: "SingleStop Pricing" },
+      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Pricing" },
       { property: "og:description", content: "Locked, all-inclusive construction packages in Jaipur." },
     ],
   }),

@@ -6,7 +6,7 @@ const PHONE = "+91-94627-23134";
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
-  name: "SingleStop",
+  name: "Single Stop Building Solutions Pvt Ltd",
   image: `${SITE_URL}/og-cover.jpg`,
   "@id": SITE_URL,
   url: SITE_URL,
@@ -14,13 +14,13 @@ export const localBusinessSchema = {
   priceRange: "₹₹₹",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "C-Scheme",
+    streetAddress: "MNIT Innovation and Incubation Center, MNIT Campus, Mansarovar",
     addressLocality: "Jaipur",
     addressRegion: "Rajasthan",
-    postalCode: "302001",
+    postalCode: "302020",
     addressCountry: "IN",
   },
-  geo: { "@type": "GeoCoordinates", latitude: 26.9124, longitude: 75.7873 },
+  geo: { "@type": "GeoCoordinates", latitude: 26.83970737659342, longitude: 75.74023611162876 },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -30,7 +30,8 @@ export const localBusinessSchema = {
   sameAs: [
     "https://www.instagram.com/singlestop",
     "https://www.facebook.com/singlestop",
-    "https://www.linkedin.com/company/singlestop",
+    "https://www.linkedin.com/company/single-stop-building-solutions-pvt-ltd",
+    "https://share.google/6YgEo5rHtYl0JexCO",
   ],
   aggregateRating: {
     "@type": "AggregateRating",
@@ -48,7 +49,7 @@ export const localBusinessSchema = {
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "SingleStop",
+  name: "Single Stop Building Solutions Pvt Ltd",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   contactPoint: {
@@ -64,7 +65,7 @@ export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   url: SITE_URL,
-  name: "SingleStop",
+  name: "Single Stop Building Solutions Pvt Ltd",
   potentialAction: {
     "@type": "SearchAction",
     target: `${SITE_URL}/blog?q={search_term_string}`,
@@ -97,7 +98,7 @@ export function projectSchema(p: {
     name: p.title,
     description: p.description,
     image: p.image,
-    creator: { "@type": "Organization", name: "SingleStop" },
+    creator: { "@type": "Organization", name: "Single Stop Building Solutions Pvt Ltd" },
     locationCreated: { "@type": "Place", name: p.location },
     url: `${SITE_URL}/projects/${p.slug}`,
   };
@@ -120,7 +121,7 @@ export function articleSchema(p: {
     author: { "@type": "Person", name: p.author },
     publisher: {
       "@type": "Organization",
-      name: "SingleStop",
+      name: "Single Stop Building Solutions Pvt Ltd",
       logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
     },
     datePublished: p.publishedAt,

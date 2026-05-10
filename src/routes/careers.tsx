@@ -18,9 +18,9 @@ interface Job {
 export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
-      { title: "Careers at SingleStop — Build Jaipur's Future With Us" },
-      { name: "description", content: "Join SingleStop — Jaipur's premium construction company. Open roles for architects, site engineers, interior designers, and more." },
-      { property: "og:title", content: "Careers at SingleStop" },
+      { title: "Careers at Single Stop Building Solutions Pvt Ltd - Build Jaipur's Future With Us" },
+      { name: "description", content: "Join Single Stop Building Solutions Pvt Ltd. Open roles for architects, site engineers, interior designers, and more." },
+      { property: "og:title", content: "Careers at Single Stop Building Solutions Pvt Ltd" },
       { property: "og:description", content: "Be part of Jaipur's most trusted construction team." },
     ],
   }),
@@ -61,7 +61,7 @@ function CareersPage() {
   }, []);
 
   function applyUrl(role: string) {
-    return waBase + encodeURIComponent(`\nI'd like to apply for the ${role} position at SingleStop.`);
+    return waBase + encodeURIComponent(`\nI'd like to apply for the ${role} position at Single Stop Building Solutions Pvt Ltd.`);
   }
 
   return (
@@ -92,7 +92,7 @@ function CareersPage() {
       <section className="py-16 lg:py-24 bg-muted/40 border-b border-border">
         <div className="container-px mx-auto max-w-7xl">
           <div className="text-center mb-10">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Why SingleStop</p>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Why Single Stop</p>
             <h2 className="mt-3 font-display text-3xl lg:text-4xl font-bold tracking-tight">
               A team that builds <span className="text-gold">careers, not just homes.</span>
             </h2>

@@ -6,10 +6,14 @@ import { CTABand } from "@/components/home/CTABand";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Construction Services in Jaipur — SingleStop" },
-      { name: "description", content: "Architectural design, residential and commercial construction, interiors, landscaping and live project tracking — Jaipur's most trusted single partner." },
-      { property: "og:title", content: "SingleStop Services" },
-      { property: "og:description", content: "Six services. One trusted partner." },
+      { title: "Construction Services in Jaipur - Single Stop Building Solutions Pvt Ltd" },
+      {
+        name: "description",
+        content:
+          "Planning, turnkey construction, PMC, interiors and finishing by Single Stop Building Solutions Pvt Ltd in Jaipur.",
+      },
+      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Services" },
+      { property: "og:description", content: "Four services. One trusted partner." },
     ],
   }),
   component: ServicesPage,
@@ -17,40 +21,28 @@ export const Route = createFileRoute("/services")({
 
 const services = [
   {
-    title: "Planning & Architecture",
-    desc: "Bespoke 3D design, BOQ, structural drawings and full statutory documentation. Vastu-compliant by default. Our senior architects handle everything from concept to municipal approval — so you never chase paperwork.",
+    title: "Planning (Architectural & Structural)",
+    desc: "Architectural concepts, space planning, structural drawings, BOQ support, and build-ready documentation prepared with practical site execution in mind.",
     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
-    tags: ["3D Design", "Vastu", "BOQ", "Approvals", "Project Management"],
+    tags: ["Architecture", "Structure", "BOQ", "Planning"],
   },
   {
-    title: "Residential Construction",
-    desc: "Turnkey villas and duplexes — from foundation to handover with locked timelines and transparent pricing. We work exclusively on residential plots. We do not build apartments.",
+    title: "Construction (Residential & Commercial) Turnkey",
+    desc: "Turnkey residential and commercial construction from foundation to handover, coordinated by one team for quality, timelines, and site discipline.",
     img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
-    tags: ["Villas", "Duplexes", "Bungalows", "Plots only"],
+    tags: ["Residential", "Commercial", "Turnkey", "Execution"],
   },
   {
-    title: "Commercial Construction",
-    desc: "Offices, retail, mixed-use towers — IGBC-ready Grade-A construction at scale. Engineered for performance and designed to impress.",
+    title: "PMC (Project Management Consultancy)",
+    desc: "Project management consultancy for planning, vendor coordination, quality monitoring, progress reporting, and milestone control.",
     img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
-    tags: ["Offices", "Retail", "Mixed-use", "IGBC"],
+    tags: ["Coordination", "Quality Checks", "Scheduling", "Reporting"],
   },
   {
-    title: "Interior Design",
-    desc: "Custom millwork, lighting, modular kitchens, premium veneers and integrated automation. Every detail handled by our in-house design team.",
+    title: "Interior & Finishing",
+    desc: "Interior detailing, finishing materials, fixtures, lighting, modular work, and final handover coordination for complete spaces.",
     img: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80",
-    tags: ["Modular Kitchen", "Lighting", "Automation", "Millwork"],
-  },
-  {
-    title: "Landscape & Pools",
-    desc: "Outdoor architecture: pools, gardens, gazebos, terrace farms, hardscaping. We turn your outdoor space into an extension of your home.",
-    img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80",
-    tags: ["Pools", "Gardens", "Gazebos", "Terrace Farms"],
-  },
-  {
-    title: "Live Site Tracking",
-    desc: "Industry-first dashboard: progress updates, billing transparency, site photos, and materials log — 24/7 visibility so you're always in control, no matter where you are.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
-    tags: ["Real-time Updates", "Billing", "Photos", "NRI Friendly"],
+    tags: ["Interiors", "Finishing", "Lighting", "Fixtures"],
   },
 ];
 
@@ -61,11 +53,11 @@ function ServicesPage() {
         <div className="container-px mx-auto max-w-7xl text-center">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Our Services</p>
           <h1 className="mt-3 font-display text-4xl lg:text-6xl font-bold tracking-tight">
-            Six services. <span className="text-gold">One partner.</span>
+            Four services. <span className="text-gold">One partner.</span>
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-muted-foreground">
-            Every discipline you need to build or design your home — under one accountable roof.
-            We work on residential plots only; we do not take renovation or apartment projects.
+            Every discipline you need to plan, build, manage, and finish your project under one
+            accountable roof.
           </p>
         </div>
       </section>
@@ -110,7 +102,11 @@ function ServicesPage() {
       </section>
 
       <PricingPackages />
-      <CTABand title="Not sure which service fits?" subtitle="Talk to our team — we'll guide you." primaryLabel="Get Free Consultation" />
+      <CTABand
+        title="Not sure which service fits?"
+        subtitle="Talk to our team and we will guide you."
+        primaryLabel="Get Free Consultation"
+      />
     </>
   );
 }

@@ -38,7 +38,7 @@ export function AdminSidebar() {
             <Building2 className="w-4 h-4 text-gold-foreground" />
           </div>
           <div>
-            <p className="text-sm font-semibold font-display leading-none">SingleStop</p>
+            <p className="text-sm font-semibold font-display leading-none">Single Stop</p>
             <p className="text-xs text-muted-foreground mt-0.5">Admin Panel</p>
           </div>
         </div>

@@ -27,14 +27,14 @@ const heroOg = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?aut
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SingleStop — Premium Construction Company in Jaipur" },
+      { title: "Single Stop Building Solutions Pvt Ltd - Premium Construction Company in Jaipur" },
       {
         name: "description",
         content:
-          "Build your dream home in Jaipur with SingleStop. Architectural design, construction, renovation, live tracking and home loan assistance — all in one premium partner.",
+          "Build your project in Jaipur with Single Stop Building Solutions Pvt Ltd. Planning, construction, PMC, interior and finishing services in one accountable partner.",
       },
-      { property: "og:title", content: "SingleStop — Premium Construction in Jaipur" },
-      { property: "og:description", content: "End-to-end construction with transparent pricing, live tracking and finance assistance." },
+      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd - Premium Construction in Jaipur" },
+      { property: "og:description", content: "Planning, turnkey construction, PMC, interior and finishing services in Jaipur." },
       { property: "og:image", content: heroOg },
       { name: "twitter:image", content: heroOg },
     ],
@@ -92,7 +92,7 @@ function Index() {
       </Suspense>
       <CTABand
         variant="light"
-        title="Join 100+ happy SingleStop families."
+        title="Join happy Single Stop families."
         subtitle="Your project is the next great story we tell."
         primaryLabel="Start My Project"
         whatsappContext="hero"

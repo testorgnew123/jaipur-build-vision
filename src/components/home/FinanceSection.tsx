@@ -109,7 +109,7 @@ export function FinanceSection() {
         </div>
 
         <p className="mt-6 text-center text-xs text-muted-foreground max-w-2xl mx-auto">
-          * Subject to bank approval and eligibility. SingleStop facilitates loan applications;
+          * Subject to bank approval and eligibility. Single Stop Building Solutions Pvt Ltd facilitates loan applications;
           final approval rests with the respective financial institution.
         </p>
       </div>

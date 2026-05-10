@@ -41,7 +41,7 @@ export function ProjectCosts() {
             Real project <span className="text-gold">cost examples</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Actual budgets from recently delivered SingleStop projects in Jaipur.
+            Actual budgets from recently delivered Single Stop Building Solutions Pvt Ltd projects in Jaipur.
           </p>
         </div>
 
@@ -74,9 +74,6 @@ export function ProjectCosts() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl bg-amber-50 border border-amber-200 px-5 py-4 text-center text-sm text-amber-800">
-          We build on <strong>residential plots only</strong> — we do not work on apartments or take renovation projects.
-        </div>
       </div>
     </section>
   );

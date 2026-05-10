@@ -6,9 +6,9 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact SingleStop — Jaipur Construction Experts" },
-      { name: "description", content: "Get a free consultation with Jaipur's premium construction company. Call, WhatsApp or fill the form — replies within 30 minutes." },
-      { property: "og:title", content: "Contact SingleStop" },
+      { title: "Contact Single Stop Building Solutions Pvt Ltd - Jaipur Construction Experts" },
+      { name: "description", content: "Get a free consultation with Single Stop Building Solutions Pvt Ltd. Call, WhatsApp or fill the form - replies within 30 minutes." },
+      { property: "og:title", content: "Contact Single Stop Building Solutions Pvt Ltd" },
       { property: "og:description", content: "Free consultation with Jaipur's premium construction company." },
     ],
   }),
@@ -61,9 +61,19 @@ function ContactPage() {
 
             <div className="rounded-2xl bg-card border border-border p-6">
               <MapPin className="w-6 h-6 text-gold" />
-              <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Visit us</div>
-              <div className="mt-1 font-semibold">SingleStop Studio</div>
-              <div className="text-sm text-muted-foreground">C-Scheme, Jaipur, Rajasthan 302001</div>
+              <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Head Office</div>
+              <div className="mt-1 font-semibold">Single Stop Building Solutions Pvt Ltd</div>
+              <div className="text-sm text-muted-foreground">MNIT Innovation and Incubation Center, MNIT Campus, Mansarovar, Jaipur, Rajasthan 302020</div>
+              <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
+                <Clock className="w-3 h-3" /> Mon-Sat 9 AM – 7 PM
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-card border border-border p-6">
+              <MapPin className="w-6 h-6 text-gold" />
+              <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Branch Office</div>
+              <div className="mt-1 font-semibold">Single Stop Building Solutions Pvt Ltd</div>
+              <div className="text-sm text-muted-foreground">S9, Gulab Vihar, near Domino's, Sheer Sagar Patrakar Colony, Dholai, Jaipur, Rajasthan 302020</div>
               <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
                 <Clock className="w-3 h-3" /> Mon-Sat 9 AM – 7 PM
               </div>
@@ -73,11 +83,11 @@ function ContactPage() {
 
         <div className="mt-14 rounded-2xl overflow-hidden border border-border aspect-[16/8]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.4!2d75.7873!3d26.9124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzQ0LjYiTiA3NcKwNDcnMTQuMyJF!5e0!3m2!1sen!2sin!4v1700000000000"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.007700639891!2d75.74023611162876!3d26.83970737659342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db773f668f9db%3A0xd797a9452a0c9735!2sSingle%20Stop%20Building%20Solutions%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1778411639249!5m2!1sen!2sin"
             className="w-full h-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="SingleStop Jaipur location"
+            title="Single Stop Building Solutions Pvt Ltd Jaipur location"
           />
         </div>
       </div>

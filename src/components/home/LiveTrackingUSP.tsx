@@ -16,8 +16,8 @@ export function LiveTrackingUSP() {
             Live tracking dashboard. <br /><span className="text-gold">Built for clarity.</span>
           </h2>
           <p className="mt-4 text-white/70 max-w-lg">
-            Watch your project unfold in real time. Daily site photos, milestone tracking,
-            transparent billing, and material logs — all in one elegant dashboard.
+            Watch your project unfold in real time. Daily site photos, milestone tracking
+            and material logs - all in one elegant dashboard.
           </p>
           <Button asChild size="lg" className="mt-7 bg-gold text-gold-foreground hover:bg-gold/90">
             <Link to="/live-tracking">Explore Dashboard</Link>
@@ -38,9 +38,9 @@ export function LiveTrackingUSP() {
             <div className="grid grid-cols-2 gap-3">
               {[
                 { icon: Activity, label: "Progress", value: "67%" },
-                { icon: BarChart3, label: "Spent", value: "₹ 92 L" },
+                { icon: BarChart3, label: "Milestones", value: "14" },
                 { icon: Camera, label: "Photos", value: "248" },
-                { icon: FileText, label: "Bills", value: "32" },
+                { icon: FileText, label: "Reports", value: "32" },
               ].map((s) => (
                 <div key={s.label} className="rounded-xl bg-white/5 border border-white/10 p-4">
                   <s.icon className="w-4 h-4 text-gold" />

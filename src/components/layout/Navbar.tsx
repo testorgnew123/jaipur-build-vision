@@ -33,10 +33,10 @@ export function Navbar() {
       )}
     >
       <div className="container-px mx-auto max-w-7xl flex items-center justify-between h-16 lg:h-20">
-        <Link to="/" className="flex items-center gap-2 group" aria-label="Single Stop — Home">
+        <Link to="/" className="flex items-center gap-2 group" aria-label="Single Stop Building Solutions Pvt Ltd Home">
           <img
             src={logo}
-            alt="Single Stop Building Solutions"
+            alt="Single Stop Building Solutions Pvt Ltd"
             className="h-9 lg:h-11 w-auto object-contain"
             width={180}
             height={44}

@@ -24,7 +24,7 @@ export const faqs = [
   },
   {
     q: "What happens if you miss a deadline?",
-    a: "Our contracts include a penalty clause for missed milestones — credited back to you. Our 8-year track record shows 98% on-time handover.",
+    a: "We plan milestones before execution, keep you updated throughout the project, and work to resolve delays with clear communication and accountability.",
   },
   {
     q: "Do you handle JDA / RERA approvals?",
@@ -32,7 +32,7 @@ export const faqs = [
   },
   {
     q: "Can I use your live tracking dashboard?",
-    a: "Every active client gets dashboard access with daily site photos, milestone progress, billing, material logs and real-time messaging with your project manager.",
+    a: "Every active client gets dashboard access with daily site photos, milestone progress, material logs and real-time messaging with your project manager.",
   },
 ];
 

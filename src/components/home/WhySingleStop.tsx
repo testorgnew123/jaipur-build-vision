@@ -9,10 +9,10 @@ const pains = [
 ];
 
 const solutions = [
-  "Locked transparent pricing — line by line",
+  "Clear project scope from the start",
   "One accountable team, end to end",
   "Live dashboard with daily photos",
-  "Penalty clause for missed milestones",
+  "Milestone planning and regular updates",
   "Premium-grade materials, verified on-site",
 ];
 
@@ -21,7 +21,7 @@ export function WhySingleStop() {
     <section className="py-20 lg:py-28 bg-muted/40">
       <div className="container-px mx-auto max-w-7xl">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Why SingleStop</p>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Why Single Stop</p>
           <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold tracking-tight">
             Construction in Jaipur, <span className="text-gold">finally fixed.</span>
           </h2>
@@ -49,7 +49,7 @@ export function WhySingleStop() {
             <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-gold/20 blur-3xl" />
             <div className="relative">
               <div className="text-xs font-semibold tracking-widest uppercase text-gold">
-                The SingleStop way
+                The Single Stop way
               </div>
               <h3 className="mt-1 font-display text-xl font-bold">
                 Premium, predictable, transparent
