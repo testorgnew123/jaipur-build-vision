@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone, Instagram, Facebook, Linkedin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logos.jpg";
 
 export function Footer() {
   return (
@@ -23,10 +23,10 @@ export function Footer() {
             PMC, interiors, finishing, finance assistance, and project tracking.
           </p>
           <div className="flex items-center gap-3 mt-6">
-            <a href="https://www.instagram.com/singlestop" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full border border-white/20 grid place-items-center hover:bg-gold hover:border-gold hover:text-ink transition-colors">
+            <a href="https://www.instagram.com/single__stop?igsh=MWxocHIxeHFyc2ZrZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full border border-white/20 grid place-items-center hover:bg-gold hover:border-gold hover:text-ink transition-colors">
               <Instagram className="w-4 h-4" />
             </a>
-            <a href="https://www.facebook.com/singlestop" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full border border-white/20 grid place-items-center hover:bg-gold hover:border-gold hover:text-ink transition-colors">
+            <a href="https://www.facebook.com/share/1ArPjusBti/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full border border-white/20 grid place-items-center hover:bg-gold hover:border-gold hover:text-ink transition-colors">
               <Facebook className="w-4 h-4" />
             </a>
             <a href="https://www.linkedin.com/company/single-stop-building-solutions-pvt-ltd" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-full border border-white/20 grid place-items-center hover:bg-gold hover:border-gold hover:text-ink transition-colors">
@@ -67,15 +67,11 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-white/70">
             <li className="flex items-start gap-2">
               <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-              <span>MNIT Innovation and Incubation Center, MNIT Campus, Mansarovar, Jaipur, Rajasthan 302020</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
               <span>S9, Gulab Vihar, near Domino's, Sheer Sagar Patrakar Colony, Dholai, Jaipur, Rajasthan 302020</span>
             </li>
             <li className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-gold shrink-0" />
-              <a href="tel:+919462723134" className="hover:text-gold">+91 94627 23134</a>
+              <a href="tel:+919571835363" className="hover:text-gold">+91 95718 35363</a>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-gold shrink-0" />

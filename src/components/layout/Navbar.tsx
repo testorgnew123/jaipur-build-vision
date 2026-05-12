@@ -4,7 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logos.jpg";
 
 const links = [
   { to: "/", label: "Home" },
@@ -60,11 +60,11 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-2">
           <a
-            href="tel:+919462723134"
+            href="tel:+919571835363"
             className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground"
           >
             <Phone className="w-4 h-4 text-gold" />
-            +91 94627 23134
+            +91 95718 35363
           </a>
           <Button asChild className="bg-gold hover:bg-gold/90 text-gold-foreground font-semibold shadow-gold">
             <Link to="/contact">Get Quote</Link>
@@ -103,11 +103,11 @@ export function Navbar() {
                 </Link>
               </Button>
               <a
-                href="tel:+919462723134"
+                href="tel:+919571835363"
                 className="mt-2 flex items-center justify-center gap-2 text-sm font-medium py-3 rounded-lg border border-border"
               >
                 <Phone className="w-4 h-4 text-gold" />
-                +91 94627 23134
+                +91 95718 35363
               </a>
             </div>
           </SheetContent>

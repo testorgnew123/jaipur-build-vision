@@ -51,7 +51,7 @@ export const organizationSchema = {
   "@type": "Organization",
   name: "Single Stop Building Solutions Pvt Ltd",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/logos.jpg`,
   contactPoint: {
     "@type": "ContactPoint",
     telephone: PHONE,
@@ -122,7 +122,7 @@ export function articleSchema(p: {
     publisher: {
       "@type": "Organization",
       name: "Single Stop Building Solutions Pvt Ltd",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logos.jpg` },
     },
     datePublished: p.publishedAt,
     mainEntityOfPage: `${SITE_URL}/blog/${p.slug}`,

@@ -39,10 +39,10 @@ function ContactPage() {
           </div>
 
           <div className="lg:col-span-2 space-y-4">
-            <a href="tel:+919462723134" className="block rounded-2xl bg-ink text-white p-6 hover:bg-ink/90 transition-colors">
+            <a href="tel:+919571835363" className="block rounded-2xl bg-ink text-white p-6 hover:bg-ink/90 transition-colors">
               <Phone className="w-6 h-6 text-gold" />
               <div className="mt-3 text-xs text-white/60 uppercase tracking-wider">Call us</div>
-              <div className="mt-1 font-display font-bold text-xl">+91 94627 23134</div>
+              <div className="mt-1 font-display font-bold text-xl">+91 95718 35363</div>
               <div className="mt-1 text-xs text-white/60">Mon-Sat · 9 AM – 7 PM</div>
             </a>
 
@@ -63,7 +63,6 @@ function ContactPage() {
               <MapPin className="w-6 h-6 text-gold" />
               <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Head Office</div>
               <div className="mt-1 font-semibold">Single Stop Building Solutions Pvt Ltd</div>
-              <div className="text-sm text-muted-foreground">MNIT Innovation and Incubation Center, MNIT Campus, Mansarovar, Jaipur, Rajasthan 302020</div>
               <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
                 <Clock className="w-3 h-3" /> Mon-Sat 9 AM – 7 PM
               </div>
