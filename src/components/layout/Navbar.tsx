@@ -4,7 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logos.jpg";
+import logo from "@/assets/logo.webp";
 
 const links = [
   { to: "/", label: "Home" },
