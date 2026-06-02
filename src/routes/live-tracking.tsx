@@ -10,6 +10,7 @@ export const Route = createFileRoute("/live-tracking")({
       { property: "og:title", content: "Live Tracking Dashboard" },
       { property: "og:description", content: "Real-time visibility into your construction project." },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/live-tracking" }],
   }),
   component: LiveTrackingPage,
 });

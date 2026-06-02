@@ -11,6 +11,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact SingleStop" },
       { property: "og:description", content: "Free consultation with Jaipur's premium construction company." },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/contact" }],
   }),
   component: ContactPage,
 });

@@ -6,6 +6,12 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { getStoredAuth } from "@/lib/auth";
 
 export const Route = createFileRoute("/admin")({
+  head: () => ({
+    meta: [
+      { title: "Admin — SingleStop" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   beforeLoad: ({ location }) => {
     if (location.pathname === "/admin/login") return;
     const auth = getStoredAuth();

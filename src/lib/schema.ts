@@ -1,13 +1,18 @@
 import { reviews, aggregateRating } from "@/data/reviews";
 
-const SITE_URL = "https://singlestop.co.in";
+export const SITE_URL = "https://singlestop.co.in";
 const PHONE = "+91-94627-23134";
+
+// Default social/share image. TODO: replace with a hosted, branded 1200x630
+// asset (currently a representative construction photo).
+export const OG_IMAGE =
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80";
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
   name: "SingleStop",
-  image: `${SITE_URL}/og-cover.jpg`,
+  image: OG_IMAGE,
   "@id": SITE_URL,
   url: SITE_URL,
   telephone: PHONE,

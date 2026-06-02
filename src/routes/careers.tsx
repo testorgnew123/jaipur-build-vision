@@ -23,6 +23,7 @@ export const Route = createFileRoute("/careers")({
       { property: "og:title", content: "Careers at SingleStop" },
       { property: "og:description", content: "Be part of Jaipur's most trusted construction team." },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/careers" }],
   }),
   component: CareersPage,
 });

@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SITE_URL, articleSchema } from "@/lib/schema";
 
 interface Post {
   slug: string;
@@ -26,6 +27,42 @@ export const Route = createFileRoute("/blog/$slug")({
     const allPosts = allRes.ok ? ((await allRes.json()) as Post[]) : [];
     const related = allPosts.filter((p) => p.slug !== params.slug).slice(0, 3);
     return { post, related };
+  },
+  head: ({ loaderData, params }) => {
+    const p = loaderData?.post;
+    const canonical = `${SITE_URL}/blog/${params.slug}`;
+    if (!p) {
+      return { meta: [{ title: "Article — SingleStop" }], links: [{ rel: "canonical", href: canonical }] };
+    }
+    const title = `${p.title} | SingleStop Blog`;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: p.excerpt },
+        { property: "og:type", content: "article" },
+        { property: "og:title", content: p.title },
+        { property: "og:description", content: p.excerpt },
+        { property: "og:image", content: p.cover },
+        { property: "og:url", content: canonical },
+        { name: "twitter:image", content: p.cover },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            articleSchema({
+              title: p.title,
+              description: p.excerpt,
+              image: p.cover,
+              author: p.author,
+              publishedAt: p.published_at,
+              slug: p.slug,
+            }),
+          ),
+        },
+      ],
+    };
   },
   errorComponent: ({ error, reset }) => {
     const router = useRouter();

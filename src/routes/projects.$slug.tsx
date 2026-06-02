@@ -3,12 +3,49 @@ import { getProject, projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MapPin, MessageCircle, Calendar, IndianRupee, Ruler } from "lucide-react";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { SITE_URL, projectSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };
+  },
+  head: ({ loaderData, params }) => {
+    const p = loaderData?.project;
+    const canonical = `${SITE_URL}/projects/${params.slug}`;
+    if (!p) {
+      return { meta: [{ title: "Project — SingleStop" }], links: [{ rel: "canonical", href: canonical }] };
+    }
+    const title = `${p.title} — ${p.type} in ${p.location} | SingleStop`;
+    const description = p.description.slice(0, 160);
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:type", content: "article" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:image", content: p.cover },
+        { property: "og:url", content: canonical },
+        { name: "twitter:image", content: p.cover },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            projectSchema({
+              title: p.title,
+              description: p.description,
+              image: p.cover,
+              location: p.location,
+              slug: p.slug,
+            }),
+          ),
+        },
+      ],
+    };
   },
   errorComponent: ({ error, reset }) => {
     const router = useRouter();

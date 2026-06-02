@@ -11,6 +11,7 @@ export const Route = createFileRoute("/services")({
       { property: "og:title", content: "SingleStop Services" },
       { property: "og:description", content: "Six services. One trusted partner." },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/services" }],
   }),
   component: ServicesPage,
 });

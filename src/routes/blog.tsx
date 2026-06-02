@@ -19,6 +19,8 @@ export const Route = createFileRoute("/blog")({
       { property: "og:title", content: "SingleStop Blog" },
       { property: "og:description", content: "Construction insights from Jaipur's premium builder." },
     ],
+    // No canonical here: /blog/$slug nests under this route and link tags
+    // accumulate down the match chain. Detail pages set their own canonical.
   }),
   loader: async () => {
     const res = await fetch("/api/posts");

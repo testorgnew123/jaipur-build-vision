@@ -11,5 +11,14 @@
 /api/users/*      /.netlify/functions/users-id     200
 /api/jobs/*       /.netlify/functions/jobs-id      200
 
+# Vite dev server internals — pass straight through to the framework (Netlify Dev).
+# No-ops in production (these paths don't exist in dist).
+/@vite/*          /@vite/:splat                    200
+/@id/*            /@id/:splat                      200
+/@fs/*            /@fs/:splat                      200
+/@react-refresh   /@react-refresh                  200
+/src/*            /src/:splat                      200
+/node_modules/*   /node_modules/:splat             200
+
 # SPA fallback — must be last
 /*                /index.html                      200

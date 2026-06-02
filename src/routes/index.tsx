@@ -38,6 +38,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: heroOg },
       { name: "twitter:image", content: heroOg },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/" }],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(organizationSchema) },
       { type: "application/ld+json", children: JSON.stringify(websiteSchema) },

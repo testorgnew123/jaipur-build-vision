@@ -13,6 +13,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:description", content: "Founded in Jaipur. Built on trust." },
       { property: "og:image", content: heroImg },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/about" }],
   }),
   component: AboutPage,
 });

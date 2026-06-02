@@ -12,6 +12,7 @@ export const Route = createFileRoute("/pricing")({
       { property: "og:title", content: "SingleStop Pricing" },
       { property: "og:description", content: "Locked, all-inclusive construction packages in Jaipur." },
     ],
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/pricing" }],
   }),
   component: PricingPage,
 });

@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, useLocation } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, useLocation, HeadContent } from "@tanstack/react-router";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
@@ -40,6 +40,7 @@ function RootComponent() {
   const isAdmin = pathname.startsWith("/admin");
   return (
     <>
+      <HeadContent />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

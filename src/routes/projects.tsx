@@ -12,6 +12,9 @@ export const Route = createFileRoute("/projects")({
       { property: "og:description", content: "Premium villas, residences and commercial projects in Jaipur." },
       { property: "og:image", content: projects[0].cover },
     ],
+    // No canonical here: /projects/$slug nests under this route, and link tags
+    // accumulate down the match chain. The listing self-canonicalizes; detail
+    // pages set their own canonical.
   }),
   component: ProjectsPage,
 });
