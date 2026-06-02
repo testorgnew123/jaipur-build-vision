@@ -19,8 +19,7 @@ export const Route = createFileRoute("/blog")({
       { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Blog" },
       { property: "og:description", content: "Construction insights from Jaipur's premium builder." },
     ],
-    // No canonical here: /blog/$slug nests under this route and link tags
-    // accumulate down the match chain. Detail pages set their own canonical.
+    links: [{ rel: "canonical", href: "https://singlestop.co.in/blog" }],
   }),
   loader: async () => {
     const res = await fetch("/api/posts");
@@ -65,8 +64,8 @@ function BlogPage() {
                   <h2 className="font-display font-bold text-lg leading-snug group-hover:text-gold transition-colors">{p.title}</h2>
                   <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
                   <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(p.publishedAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {p.readingTime}</span>
+                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(p.published_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</span>
+                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {p.reading_time}</span>
                   </div>
                 </div>
               </Link>

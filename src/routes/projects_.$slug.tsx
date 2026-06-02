@@ -5,7 +5,7 @@ import { ArrowLeft, MapPin, MessageCircle, Calendar, IndianRupee, Ruler } from "
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { SITE_URL, projectSchema } from "@/lib/schema";
 
-export const Route = createFileRoute("/projects/$slug")({
+export const Route = createFileRoute("/projects_/$slug")({
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();

@@ -5,9 +5,11 @@
 // Fail-soft: if Chromium can't launch, the build still succeeds (pages just
 // fall back to client-side render). Runs via npm "postbuild".
 //
-// API-dependent routes (/blog, /blog/:slug, /careers) are intentionally skipped
-// because their loaders call /api/* which isn't available at build time. They
-// still get correct meta client-side via <HeadContent />.
+// Loader-driven routes (/blog, /blog/:slug) and the client-fetched /careers
+// page depend on /api/*. The static server below proxies /api/* to the
+// production origin (PRERENDER_API_ORIGIN) so those routes render real content
+// at build time. If the API is unreachable, the proxy returns a non-200 and the
+// affected route falls back to client-side render — the build still succeeds.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { createServer } from "node:http";
 import { fileURLToPath } from "node:url";
@@ -17,6 +19,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
 const dist = resolve(root, "dist");
 const PORT = 4178;
+const API_ORIGIN = process.env.PRERENDER_API_ORIGIN || "https://singlestop.co.in";
 
 const slugsFrom = (file) => {
   const src = readFileSync(resolve(root, file), "utf8");
@@ -31,7 +34,10 @@ const routes = [
   "/projects",
   "/live-tracking",
   "/contact",
+  "/blog",
+  "/careers",
   ...slugsFrom("src/data/projects.ts").map((s) => `/projects/${s}`),
+  ...slugsFrom("src/data/posts.ts").map((s) => `/blog/${s}`),
 ];
 
 const MIME = {
@@ -49,8 +55,25 @@ const MIME = {
 
 // Minimal static server with SPA fallback to index.html.
 const indexHtml = readFileSync(join(dist, "index.html"));
-const server = createServer((req, res) => {
+const server = createServer(async (req, res) => {
   const urlPath = decodeURIComponent(req.url.split("?")[0]);
+
+  // Proxy /api/* to the production origin so loader-driven routes resolve real
+  // content at build time. Fail-soft: a proxy error surfaces as a non-200 the
+  // route loader handles, leaving that page to client-side render.
+  if (urlPath.startsWith("/api/")) {
+    try {
+      const upstream = await fetch(`${API_ORIGIN}${req.url}`, { headers: { accept: "application/json" } });
+      const body = Buffer.from(await upstream.arrayBuffer());
+      res.writeHead(upstream.status, { "Content-Type": upstream.headers.get("content-type") || "application/json" });
+      res.end(body);
+    } catch (e) {
+      res.writeHead(502, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: `prerender proxy failed: ${e.message}` }));
+    }
+    return;
+  }
+
   const filePath = join(dist, urlPath);
   if (extname(filePath) && existsSync(filePath)) {
     res.writeHead(200, { "Content-Type": MIME[extname(filePath)] || "application/octet-stream" });

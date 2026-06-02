@@ -15,7 +15,7 @@ interface Post {
   content: string;
 }
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/blog_/$slug")({
   loader: async ({ params }) => {
     const [postRes, allRes] = await Promise.all([
       fetch(`/api/posts/${params.slug}`),

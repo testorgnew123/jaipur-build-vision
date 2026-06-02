@@ -60,3 +60,15 @@
 
 # SPA fallback for production lives in public/_redirects so Netlify Dev
 # does not intercept Vite module requests (which would break HMR).
+
+# Security / best-practice response headers (applied to all routes).
+# CSP is intentionally omitted here: the site loads Google Fonts, Unsplash
+# images and third-party embeds, so a Content-Security-Policy needs per-source
+# tuning before it can be enforced without breaking assets.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
