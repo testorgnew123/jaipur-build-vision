@@ -14,9 +14,9 @@ interface Post {
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Construction Blog — SingleStop Jaipur" },
+      { title: "Construction Blog - Single Stop Building Solutions Pvt Ltd Jaipur" },
       { name: "description", content: "Insights on construction costs, design, Vastu, NRI building, materials and more — from Jaipur's premium builder." },
-      { property: "og:title", content: "SingleStop Blog" },
+      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Blog" },
       { property: "og:description", content: "Construction insights from Jaipur's premium builder." },
     ],
     // No canonical here: /blog/$slug nests under this route and link tags
@@ -38,7 +38,7 @@ function BlogPage() {
         <div className="container-px mx-auto max-w-5xl text-center">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold">Insights</p>
           <h1 className="mt-3 font-display text-4xl lg:text-6xl font-bold tracking-tight">
-            The SingleStop <span className="text-gold">journal.</span>
+            The Single Stop <span className="text-gold">journal.</span>
           </h1>
         </div>
       </section>

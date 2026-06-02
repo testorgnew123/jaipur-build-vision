@@ -2,31 +2,31 @@ const examples = [
   {
     title: "3BHK Residence — Vaishali Nagar",
     area: "2,200 sq.ft",
-    total: "₹ 45 Lakh",
+    total: "₹ 41 Lakh Approx",
     chips: [
-      { label: "Civil", value: "₹ 26 L" },
-      { label: "Finishing", value: "₹ 13 L" },
-      { label: "Interior", value: "₹ 6 L" },
+      { label: "Civil", value: "₹ 25 L" },
+      { label: "Finishing", value: "₹ 11 L" },
+      { label: "Interior", value: "₹ 5 L" },
     ],
   },
   {
     title: "4BHK Villa — Mansarovar",
     area: "4,200 sq.ft",
-    total: "₹ 1.05 Cr",
+    total: "₹ 79 Lakh Approx",
     chips: [
-      { label: "Civil", value: "₹ 60 L" },
-      { label: "Finishing", value: "₹ 30 L" },
-      { label: "Interior", value: "₹ 15 L" },
+      { label: "Civil", value: "₹ 48 L" },
+      { label: "Finishing", value: "₹ 22 L" },
+      { label: "Interior", value: "₹ 9 L" },
     ],
   },
   {
     title: "Duplex — Jagatpura",
     area: "3,200 sq.ft",
-    total: "₹ 72 Lakh",
+    total: "₹ 60 Lakh Approx",
     chips: [
-      { label: "Civil", value: "₹ 40 L" },
-      { label: "Finishing", value: "₹ 22 L" },
-      { label: "Interior", value: "₹ 10 L" },
+      { label: "Civil", value: "₹ 36 L" },
+      { label: "Finishing", value: "₹ 17 L" },
+      { label: "Interior", value: "₹ 7 L" },
     ],
   },
 ];
@@ -41,7 +41,7 @@ export function ProjectCosts() {
             Real project <span className="text-gold">cost examples</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Actual budgets from recently delivered SingleStop projects in Jaipur.
+            Actual budgets from recently delivered Single Stop Building Solutions Pvt Ltd projects in Jaipur.
           </p>
         </div>
 
@@ -74,9 +74,6 @@ export function ProjectCosts() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl bg-amber-50 border border-amber-200 px-5 py-4 text-center text-sm text-amber-800">
-          We build on <strong>residential plots only</strong> — we do not work on apartments or take renovation projects.
-        </div>
       </div>
     </section>
   );

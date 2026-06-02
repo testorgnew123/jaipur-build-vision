@@ -6,9 +6,9 @@ import { MapPin, ArrowUpRight } from "lucide-react";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Our Projects — SingleStop Jaipur" },
-      { name: "description", content: "Browse SingleStop's portfolio of villas, residences, commercial towers and renovation projects across Jaipur." },
-      { property: "og:title", content: "SingleStop Projects" },
+      { title: "Our Projects - Single Stop Building Solutions Pvt Ltd Jaipur" },
+      { name: "description", content: "Browse the Single Stop Building Solutions Pvt Ltd portfolio across Jaipur." },
+      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Projects" },
       { property: "og:description", content: "Premium villas, residences and commercial projects in Jaipur." },
       { property: "og:image", content: projects[0].cover },
     ],
@@ -34,7 +34,7 @@ function ProjectsPage() {
             Our <span className="text-gold">work.</span>
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-muted-foreground">
-            Hand-picked projects from the SingleStop portfolio across Jaipur.
+            Hand-picked projects from the Single Stop Building Solutions Pvt Ltd portfolio across Jaipur.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-2">

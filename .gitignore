@@ -69,3 +69,9 @@ bank_images/
 
 # Local Netlify folder
 .netlify
+
+# Claude Code workspace
+.claude/
+
+# Local notes / scratch files
+story.txt

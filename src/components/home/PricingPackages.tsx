@@ -132,9 +132,6 @@ export function PricingPackages() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl bg-amber-50 border border-amber-200 px-5 py-4 text-center text-sm text-amber-800">
-          We work on <strong>residential plots only</strong> — we do not take up apartment or renovation projects.
-        </div>
         <p className="mt-4 text-center text-xs text-muted-foreground">
           * Prices indicative for Jaipur municipal limits. Final quote depends on plot, design and finishes.
         </p>

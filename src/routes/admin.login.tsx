@@ -64,7 +64,7 @@ function LoginPage() {
               <Building2 className="w-6 h-6 text-gold-foreground" />
             </div>
           </div>
-          <CardTitle className="font-display text-2xl">SingleStop Admin</CardTitle>
+          <CardTitle className="font-display text-2xl">Single Stop Admin</CardTitle>
           <CardDescription>Sign in to manage your dashboard</CardDescription>
         </CardHeader>
         <CardContent>

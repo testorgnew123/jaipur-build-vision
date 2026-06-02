@@ -81,7 +81,7 @@ export function PostForm({ defaultValues, onSubmit, submitLabel = "Save Post", i
         </div>
         <div className="space-y-1.5">
           <Label>Author</Label>
-          <Input placeholder="SingleStop Team" {...register("author")} />
+          <Input placeholder="Single Stop Team" {...register("author")} />
           {errors.author && <p className="text-xs text-destructive">{errors.author.message}</p>}
         </div>
       </div>

@@ -24,7 +24,7 @@ export function Hero() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Premium Jaipur villa built by SingleStop"
+          alt="Premium Jaipur villa built by Single Stop Building Solutions Pvt Ltd"
           className="absolute inset-0 w-full h-full object-cover"
           fetchPriority="high"
           width={1920}
@@ -55,7 +55,7 @@ export function Hero() {
           <div className="flex flex-wrap items-center gap-2">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur text-xs font-medium tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
-              Jaipur's Premium Construction Brand
+              Single Stop Building Solutions Pvt Ltd
             </div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-danger/15 border border-danger/40 text-danger text-[10px] font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-danger animate-pulse" />
@@ -68,8 +68,8 @@ export function Hero() {
             <span className="text-gold">Live luxuriously.</span>
           </h1>
           <p className="mt-5 text-base sm:text-lg text-white/75 max-w-xl">
-            End-to-end design + build + finance assistance for Jaipur's most discerning
-            homeowners. Transparent pricing, live tracking, on-time handover.
+            End-to-end planning, turnkey construction, PMC, interior and finishing services
+            for Jaipur projects, coordinated by one accountable team.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">

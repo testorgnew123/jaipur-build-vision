@@ -55,11 +55,8 @@ export function FeaturedProjects() {
                   <div className="mt-1 flex items-center gap-1 text-xs text-white/80">
                     <MapPin className="w-3 h-3" /> {p.location}
                   </div>
-                  <div className="mt-3 flex items-center justify-between text-xs">
+                  <div className="mt-3 flex items-center text-xs">
                     <span className="text-white/70">{p.area} · {p.budget}</span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-gold">
-                      View <ArrowUpRight className="w-3 h-3" />
-                    </span>
                   </div>
                 </div>
               </Link>

@@ -30,7 +30,7 @@ export function FinanceSection() {
       <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gold/10 blur-3xl" />
       <div className="container-px mx-auto max-w-7xl relative">
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold-soft text-gold-foreground text-xs font-semibold tracking-wider uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold-soft text-gold text-xs font-semibold tracking-wider uppercase mb-4">
             <FileCheck className="w-3.5 h-3.5 text-gold" />
             Finance Partners
           </div>
@@ -109,7 +109,7 @@ export function FinanceSection() {
         </div>
 
         <p className="mt-6 text-center text-xs text-muted-foreground max-w-2xl mx-auto">
-          * Subject to bank approval and eligibility. SingleStop facilitates loan applications;
+          * Subject to bank approval and eligibility. Single Stop Building Solutions Pvt Ltd facilitates loan applications;
           final approval rests with the respective financial institution.
         </p>
       </div>

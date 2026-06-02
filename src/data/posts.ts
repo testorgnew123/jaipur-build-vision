@@ -20,7 +20,7 @@ export const posts: Post[] = [
     excerpt:
       "From civil shell to turnkey luxury — here's exactly what it costs to build per sq.ft in Jaipur this year.",
     cover: u("photo-1503387762-592deb58ef4e"),
-    author: "Rohit Sharma",
+    author: "Neeraj Singhal",
     publishedAt: "2025-02-12",
     readingTime: "8 min read",
     tags: ["Costing", "Jaipur"],
@@ -45,7 +45,7 @@ export const posts: Post[] = [
     title: "NRI's Guide to Building a Home in Jaipur Remotely",
     excerpt: "Power of attorney, payments, live tracking, and quality control — all from abroad.",
     cover: u("photo-1582268611958-ebfd161ef9cf"),
-    author: "Rohit Sharma",
+    author: "Neeraj Singhal",
     publishedAt: "2025-01-15",
     readingTime: "10 min read",
     tags: ["NRI", "Process"],
