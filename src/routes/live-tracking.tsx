@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OG_IMAGE } from "@/lib/schema";
 import { LiveTrackingUSP } from "@/components/home/LiveTrackingUSP";
 import { Activity, Camera, FileText, MessageSquare, ClipboardCheck, ShieldCheck } from "lucide-react";
 
@@ -9,6 +10,8 @@ export const Route = createFileRoute("/live-tracking")({
       { name: "description", content: "Watch your Jaipur construction project unfold in real time with daily photos, milestone tracking and quality logs." },
       { property: "og:title", content: "Live Tracking Dashboard" },
       { property: "og:description", content: "Real-time visibility into your construction project." },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/live-tracking" }],
   }),

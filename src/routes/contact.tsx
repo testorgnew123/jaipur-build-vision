@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OG_IMAGE } from "@/lib/schema";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -10,6 +11,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Get a free consultation with Single Stop Building Solutions Pvt Ltd. Call, WhatsApp or fill the form - replies within 30 minutes." },
       { property: "og:title", content: "Contact Single Stop Building Solutions Pvt Ltd" },
       { property: "og:description", content: "Free consultation with Jaipur's premium construction company." },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/contact" }],
   }),

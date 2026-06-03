@@ -17,12 +17,10 @@ import { JaipurExpertise } from "@/components/home/JaipurExpertise";
 import { NRISection } from "@/components/home/NRISection";
 import { FAQ, faqs } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
-import { faqSchema, organizationSchema, websiteSchema } from "@/lib/schema";
+import { faqSchema, organizationSchema, websiteSchema, OG_IMAGE } from "@/lib/schema";
 
 const BeforeAfterSlider = lazy(() => import("@/components/home/BeforeAfterSlider"));
 const VideoTestimonials = lazy(() => import("@/components/home/VideoTestimonials"));
-
-const heroOg = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,10 +31,10 @@ export const Route = createFileRoute("/")({
         content:
           "Build your project in Jaipur with Single Stop Building Solutions Pvt Ltd. Planning, construction, PMC, interior and finishing services in one accountable partner.",
       },
-      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd - Premium Construction in Jaipur" },
+      { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd - Premium Construction Company in Jaipur" },
       { property: "og:description", content: "Planning, turnkey construction, PMC, interior and finishing services in Jaipur." },
-      { property: "og:image", content: heroOg },
-      { name: "twitter:image", content: heroOg },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/" }],
     scripts: [

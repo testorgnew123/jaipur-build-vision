@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Award, Users, Target, Heart, ShieldCheck, Sparkles, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OG_IMAGE } from "@/lib/schema";
 
 const heroImg = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80";
 
@@ -15,7 +16,8 @@ export const Route = createFileRoute("/about")({
       },
       { property: "og:title", content: "About Single Stop Building Solutions Pvt Ltd" },
       { property: "og:description", content: "One place for complete building solutions." },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/about" }],
   }),

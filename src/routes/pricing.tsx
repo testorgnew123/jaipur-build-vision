@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OG_IMAGE } from "@/lib/schema";
 import { PricingPackages } from "@/components/home/PricingPackages";
 import { FAQ } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
@@ -11,6 +12,8 @@ export const Route = createFileRoute("/pricing")({
       { name: "description", content: "Transparent construction packages from ₹1,650/sq.ft. Essential, Signature and Luxe options with full inclusion lists." },
       { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Pricing" },
       { property: "og:description", content: "Locked, all-inclusive construction packages in Jaipur." },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/pricing" }],
   }),

@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/generate-sitemap.mjs",
+    "og": "node scripts/generate-og.mjs",
     "build": "vite build",
     "postbuild": "node scripts/prerender.mjs",
     "build:dev": "vite build --mode development",

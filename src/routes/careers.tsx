@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OG_IMAGE } from "@/lib/schema";
 import { useEffect, useState } from "react";
 import { MapPin, Clock, ArrowRight, Zap, TrendingUp, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,8 @@ export const Route = createFileRoute("/careers")({
       { name: "description", content: "Join Single Stop Building Solutions Pvt Ltd. Open roles for architects, site engineers, interior designers, and more." },
       { property: "og:title", content: "Careers at Single Stop Building Solutions Pvt Ltd" },
       { property: "og:description", content: "Be part of Jaipur's most trusted construction team." },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/careers" }],
   }),

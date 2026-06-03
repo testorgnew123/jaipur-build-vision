@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { OG_IMAGE } from "@/lib/schema";
 import { Button } from "@/components/ui/button";
 import { PricingPackages } from "@/components/home/PricingPackages";
 import { CTABand } from "@/components/home/CTABand";
@@ -14,6 +15,8 @@ export const Route = createFileRoute("/services")({
       },
       { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Services" },
       { property: "og:description", content: "Four services. One trusted partner." },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/services" }],
   }),

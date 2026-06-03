@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calendar, Clock } from "lucide-react";
+import { OG_IMAGE } from "@/lib/schema";
 
 interface Post {
   slug: string;
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/blog")({
       { name: "description", content: "Insights on construction costs, design, Vastu, NRI building, materials and more — from Jaipur's premium builder." },
       { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Blog" },
       { property: "og:description", content: "Construction insights from Jaipur's premium builder." },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/blog" }],
   }),
