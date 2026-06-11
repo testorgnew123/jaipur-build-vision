@@ -31,6 +31,7 @@ const slugsFrom = (file) => {
 
 const projectSlugs = slugsFrom("src/data/projects.ts");
 const blogSlugs = slugsFrom("src/data/posts.ts");
+const packageSlugs = slugsFrom("src/data/packages.ts");
 
 const today = new Date().toISOString().slice(0, 10);
 
@@ -41,9 +42,10 @@ const entries = [
   ...staticRoutes.map((r) => url(r.path, r)),
   ...projectSlugs.map((s) => url(`/projects/${s}`, { priority: "0.6", changefreq: "monthly" })),
   ...blogSlugs.map((s) => url(`/blog/${s}`, { priority: "0.6", changefreq: "monthly" })),
+  ...packageSlugs.map((s) => url(`/packages/${s}`, { priority: "0.7", changefreq: "monthly" })),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join("\n")}\n</urlset>\n`;
 
 writeFileSync(resolve(root, "public/sitemap.xml"), xml);
-console.log(`sitemap.xml: ${entries.length} urls (${projectSlugs.length} projects, ${blogSlugs.length} posts)`);
+console.log(`sitemap.xml: ${entries.length} urls (${projectSlugs.length} projects, ${blogSlugs.length} posts, ${packageSlugs.length} packages)`);

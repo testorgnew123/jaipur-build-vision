@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Newspaper } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { OG_IMAGE } from "@/lib/schema";
 
 interface Post {
@@ -25,9 +26,16 @@ export const Route = createFileRoute("/blog")({
     links: [{ rel: "canonical", href: "https://singlestop.co.in/blog" }],
   }),
   loader: async () => {
-    const res = await fetch("/api/posts");
-    if (!res.ok) throw new Error("Failed to load posts");
-    return { posts: (await res.json()) as Post[] };
+    try {
+      const res = await fetch("/api/posts");
+      if (!res.ok) return { posts: [] as Post[] };
+      const ct = res.headers.get("content-type") ?? "";
+      if (!ct.includes("application/json")) return { posts: [] as Post[] };
+      const data = await res.json();
+      return { posts: Array.isArray(data) ? (data as Post[]) : [] };
+    } catch {
+      return { posts: [] as Post[] };
+    }
   },
   component: BlogPage,
 });
@@ -47,8 +55,23 @@ function BlogPage() {
 
       <section className="py-16 lg:py-24">
         <div className="container-px mx-auto max-w-7xl">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((p) => (
+          {posts.length === 0 ? (
+            <div className="text-center max-w-md mx-auto py-12 lg:py-16">
+              <div className="w-16 h-16 rounded-2xl bg-gold-soft text-gold grid place-items-center mx-auto">
+                <Newspaper className="w-8 h-8" />
+              </div>
+              <h2 className="mt-5 font-display text-2xl lg:text-3xl font-bold">Articles coming soon</h2>
+              <p className="mt-3 text-muted-foreground">
+                We're putting together helpful guides on construction costs, design, Vastu and more.
+                Check back shortly.
+              </p>
+              <Button asChild className="mt-6 bg-gold text-gold-foreground hover:bg-gold/90 font-semibold">
+                <Link to="/contact">Talk to our team</Link>
+              </Button>
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {posts.map((p) => (
               <Link
                 key={p.slug}
                 to="/blog/$slug"
@@ -71,9 +94,10 @@ function BlogPage() {
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {p.reading_time}</span>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>

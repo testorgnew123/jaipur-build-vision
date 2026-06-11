@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { OG_IMAGE } from "@/lib/schema";
+import { OG_IMAGE, faqSchema } from "@/lib/schema";
 import { PricingPackages } from "@/components/home/PricingPackages";
-import { FAQ } from "@/components/home/FAQ";
+import { EstimateCalculator } from "@/components/home/EstimateCalculator";
+import { FAQ, faqs } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
 import { Calculator } from "lucide-react";
 
@@ -9,24 +10,40 @@ export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       { title: "Construction Pricing in Jaipur - Single Stop Building Solutions Pvt Ltd Packages" },
-      { name: "description", content: "Transparent construction packages from ₹1,650/sq.ft. Essential, Signature and Luxe options with full inclusion lists." },
+      { name: "description", content: "Transparent construction packages from ₹1,949/sq.ft. Standard, Classic, Premium and Luxury villa packages with full inclusion lists." },
       { property: "og:title", content: "Single Stop Building Solutions Pvt Ltd Pricing" },
       { property: "og:description", content: "Locked, all-inclusive construction packages in Jaipur." },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "https://singlestop.co.in/pricing" }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(faqSchema(faqs)) },
+    ],
   }),
   component: PricingPage,
 });
 
-const compare = [
-  { feature: "Structure (RCC)", essential: "M25", signature: "M25", luxe: "M30" },
-  { feature: "Tiles", essential: "Standard ceramic", signature: "Designer Italian", luxe: "Imported marble" },
-  { feature: "Paints", essential: "Asian / Berger", signature: "Royale / Apex", luxe: "Premium emulsion" },
-  { feature: "Modular kitchen", essential: "—", signature: "Included", luxe: "Premium imported" },
-  { feature: "Smart home", essential: "—", signature: "Smart switches", luxe: "Lutron full automation" },
-  { feature: "Warranty", essential: "10 yrs structural", signature: "10 yrs + finishes", luxe: "10 yrs + lifetime support" },
+type TierKey = "std" | "cls" | "prm" | "lux";
+const tiers: { key: TierKey; name: string; popular?: boolean }[] = [
+  { key: "std", name: "Standard" },
+  { key: "cls", name: "Classic" },
+  { key: "prm", name: "Premium", popular: true },
+  { key: "lux", name: "Luxury" },
+];
+
+const compare: ({ feature: string } & Record<TierKey, string>)[] = [
+  { feature: "Price / sq.ft", std: "₹1,949", cls: "₹2,149", prm: "₹2,390", lux: "₹2,690" },
+  { feature: "Reinforcement steel", std: "Jindal", cls: "Jindal Panther", prm: "Jindal Panther", lux: "Jindal" },
+  { feature: "Flooring", std: "Ceramic (≤₹40)", cls: "Granite + ceramic (≤₹60)", prm: "Granite + ceramic (≤₹60)", lux: "Granite + ceramic (≤₹60)" },
+  { feature: "Paint", std: "Distemper (Asian)", cls: "Royal Color (Asian)", prm: "Royal Color (Asian)", lux: "Royal Color (Asian)" },
+  { feature: "Bathroom budget", std: "₹20,000", cls: "₹25,000", prm: "₹25,000", lux: "₹30,000" },
+  { feature: "Modular kitchen", std: "—", cls: "—", prm: "Included", lux: "Included" },
+  { feature: "Chimney", std: "—", cls: "—", prm: "—", lux: "Prestige / Elica" },
+  { feature: "P.O.P. fall ceiling", std: "—", cls: "Included", prm: "Included", lux: "Included" },
+  { feature: "Furniture", std: "—", cls: "—", prm: "TV panel", lux: "Beds, sofa, TV, almirah" },
+  { feature: "Main gate", std: "≤₹20,000", cls: "≤₹20,000", prm: "≤₹20,000", lux: "≤₹35,000" },
+  { feature: "Structural warranty", std: "10 yrs", cls: "10 yrs", prm: "10 yrs", lux: "10 yrs" },
 ];
 
 function PricingPage() {
@@ -48,23 +65,37 @@ function PricingPage() {
           <h2 className="text-center font-display text-3xl lg:text-4xl font-bold tracking-tight mb-10">
             Compare packages
           </h2>
-          <div className="overflow-hidden rounded-2xl border border-border bg-background">
-            <table className="w-full text-sm">
+          <div className="overflow-x-auto rounded-2xl border border-border bg-background">
+            <table className="w-full min-w-[680px] text-sm">
               <thead className="bg-ink text-white">
                 <tr>
                   <th className="text-left p-4 font-semibold">Feature</th>
-                  <th className="p-4 font-semibold">Essential</th>
-                  <th className="p-4 font-semibold text-gold">Signature</th>
-                  <th className="p-4 font-semibold">Luxe</th>
+                  {tiers.map((t) => (
+                    <th key={t.key} className={`p-4 font-semibold ${t.popular ? "text-gold" : ""}`}>
+                      {t.name}
+                      {t.popular && (
+                        <span className="block text-[10px] font-bold uppercase tracking-wider text-gold/80">
+                          Most popular
+                        </span>
+                      )}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
                 {compare.map((row) => (
                   <tr key={row.feature} className="border-t border-border">
                     <td className="p-4 font-medium">{row.feature}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.essential}</td>
-                    <td className="p-4 text-center font-semibold">{row.signature}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.luxe}</td>
+                    {tiers.map((t) => (
+                      <td
+                        key={t.key}
+                        className={`p-4 text-center ${
+                          t.popular ? "font-semibold bg-gold-soft/40" : "text-muted-foreground"
+                        }`}
+                      >
+                        {row[t.key]}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
@@ -74,14 +105,18 @@ function PricingPage() {
       </section>
 
       <section className="py-20 lg:py-28">
-        <div className="container-px mx-auto max-w-3xl text-center">
-          <Calculator className="w-12 h-12 mx-auto text-gold" />
-          <h2 className="mt-4 font-display text-3xl lg:text-4xl font-bold tracking-tight">
-            Want a custom estimate?
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            Share your plot size and finish preferences — we'll send back a detailed quote within 48 hours.
-          </p>
+        <div className="container-px mx-auto max-w-3xl">
+          <div className="text-center">
+            <Calculator className="w-12 h-12 mx-auto text-gold" />
+            <h2 className="mt-4 font-display text-3xl lg:text-4xl font-bold tracking-tight">
+              Want a custom estimate?
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Enter your built-up area and pick a package for an instant ballpark — we'll send a
+              detailed quote within 48 hours.
+            </p>
+          </div>
+          <EstimateCalculator />
         </div>
       </section>
 

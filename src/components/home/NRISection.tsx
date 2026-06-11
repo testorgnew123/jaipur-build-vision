@@ -2,7 +2,14 @@ import { Globe2, Video, FileSignature, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const flags = ["🇦🇪", "🇺🇸", "🇬🇧", "🇨🇦", "🇦🇺", "🇸🇬"];
+const flags = [
+  { code: "ae", label: "United Arab Emirates" },
+  { code: "us", label: "United States" },
+  { code: "gb", label: "United Kingdom" },
+  { code: "ca", label: "Canada" },
+  { code: "au", label: "Australia" },
+  { code: "sg", label: "Singapore" },
+];
 const features = [
   { icon: Video, title: "Weekly drone footage", desc: "Cinematic aerial updates delivered to your inbox." },
   { icon: FileSignature, title: "POA-friendly process", desc: "Streamlined Power of Attorney workflow for absentee clients." },
@@ -25,8 +32,20 @@ export function NRISection() {
           <p className="mt-4 text-white/70">
             We've helped 30+ NRI families build their Jaipur dream home — without setting foot on site until handover.
           </p>
-          <div className="mt-5 flex justify-center gap-3 text-3xl">
-            {flags.map((f) => <span key={f}>{f}</span>)}
+          <div className="mt-5 flex justify-center items-center gap-3">
+            {flags.map((f) => (
+              <img
+                key={f.code}
+                src={`https://flagcdn.com/w80/${f.code}.png`}
+                srcSet={`https://flagcdn.com/w160/${f.code}.png 2x`}
+                width={30}
+                height={24}
+                alt={f.label}
+                title={f.label}
+                loading="lazy"
+                className="h-6 w-auto rounded-sm shadow-sm ring-1 ring-white/20"
+              />
+            ))}
           </div>
         </div>
 

@@ -1,71 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Check, Star } from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const tiers = [
-  {
-    name: "Basic",
-    price: "₹ 1,890",
-    unit: "per sq.ft",
-    desc: "Solid civil shell with quality standard finishes for value-conscious homebuilders.",
-    features: [
-      "RCC structure (M25 grade)",
-      "Standard ceramic tiles",
-      "Asian / Berger paints",
-      "Branded sanitary fittings",
-      "Basic electrical layout",
-      "8-month timeline",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Standard",
-    price: "₹ 2,090",
-    unit: "per sq.ft",
-    desc: "Enhanced finishes with better materials — a solid step up from basic.",
-    features: [
-      "RCC structure (M30 grade)",
-      "Vitrified tile flooring",
-      "Royale / Apex paints",
-      "Branded CP & sanitary",
-      "Concealed wiring (ISI)",
-      "9-month timeline",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Premium",
-    price: "₹ 2,249",
-    unit: "per sq.ft",
-    desc: "Our most popular package. Premium finishes and smart features included.",
-    features: [
-      "Designer Italian tiles",
-      "Royale / Apex paints",
-      "Modular kitchen included",
-      "False ceiling + cove lighting",
-      "Branded CP & sanitary",
-      "Smart switches included",
-      "10-month timeline",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Luxury",
-    price: "₹ 2,499",
-    unit: "per sq.ft",
-    desc: "Turnkey luxury with imported finishes and full home automation.",
-    features: [
-      "Imported marble flooring",
-      "Premium veneer doors",
-      "Designer interior package",
-      "Full home automation",
-      "Imported CP fittings",
-      "Landscape ready",
-      "12-month timeline",
-    ],
-    highlight: false,
-  },
-];
+import { packages } from "@/data/packages";
 
 export function PricingPackages() {
   return (
@@ -82,51 +18,59 @@ export function PricingPackages() {
         </div>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {tiers.map((t) => (
+          {packages.map((p) => (
             <div
-              key={t.name}
+              key={p.name}
               className={`relative rounded-2xl p-6 lg:p-7 border transition-all ${
-                t.highlight
+                p.highlight
                   ? "bg-ink text-white border-gold shadow-elegant lg:-translate-y-2"
                   : "bg-card border-border hover:border-gold/50"
               }`}
             >
-              {t.highlight && (
+              {p.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-gold text-ink text-xs font-bold tracking-wider uppercase flex items-center gap-1 whitespace-nowrap">
                   <Star className="w-3 h-3 fill-current" /> Most Popular
                 </div>
               )}
-              <h3 className={`font-display text-xl font-bold ${t.highlight ? "text-gold" : ""}`}>
-                {t.name}
+              <h3 className={`font-display text-xl font-bold ${p.highlight ? "text-gold" : ""}`}>
+                {p.name}
               </h3>
               <div className="mt-3 flex items-baseline gap-1">
-                <span className="font-display text-3xl font-bold">{t.price}</span>
-                <span className={`text-xs ${t.highlight ? "text-white/60" : "text-muted-foreground"}`}>
-                  {t.unit}
+                <span className="font-display text-3xl font-bold">{p.price}</span>
+                <span className={`text-xs ${p.highlight ? "text-white/60" : "text-muted-foreground"}`}>
+                  {p.unit}
                 </span>
               </div>
-              <p className={`mt-2 text-xs leading-relaxed ${t.highlight ? "text-white/70" : "text-muted-foreground"}`}>
-                {t.desc}
+              <p className={`mt-2 text-xs leading-relaxed ${p.highlight ? "text-white/70" : "text-muted-foreground"}`}>
+                {p.desc}
               </p>
 
               <ul className="mt-5 space-y-2">
-                {t.features.map((f) => (
+                {p.features.map((f) => (
                   <li key={f} className="flex gap-2 text-sm">
                     <Check className="w-4 h-4 mt-0.5 shrink-0 text-gold" />
-                    <span className={t.highlight ? "text-white/85" : "text-foreground/85"}>{f}</span>
+                    <span className={p.highlight ? "text-white/85" : "text-foreground/85"}>{f}</span>
                   </li>
                 ))}
               </ul>
 
+              <Link
+                to="/packages/$slug"
+                params={{ slug: p.slug }}
+                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-gold hover:gap-2 transition-all"
+              >
+                View full details <ArrowRight className="w-4 h-4" />
+              </Link>
+
               <Button
                 asChild
-                className={`mt-6 w-full font-semibold text-sm ${
-                  t.highlight
+                className={`mt-4 w-full font-semibold text-sm ${
+                  p.highlight
                     ? "bg-gold text-gold-foreground hover:bg-gold/90"
                     : "bg-ink text-white hover:bg-ink/90"
                 }`}
               >
-                <Link to="/contact">Choose {t.name}</Link>
+                <Link to="/contact">Choose {p.name}</Link>
               </Button>
             </div>
           ))}

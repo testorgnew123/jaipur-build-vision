@@ -38,6 +38,7 @@ const routes = [
   "/careers",
   ...slugsFrom("src/data/projects.ts").map((s) => `/projects/${s}`),
   ...slugsFrom("src/data/posts.ts").map((s) => `/blog/${s}`),
+  ...slugsFrom("src/data/packages.ts").map((s) => `/packages/${s}`),
 ];
 
 const MIME = {

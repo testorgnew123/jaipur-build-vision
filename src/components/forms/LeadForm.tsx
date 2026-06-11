@@ -141,7 +141,7 @@ export function LeadForm({
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-4">
-      <div className={compact || siteVisit ? "grid grid-cols-1 gap-4" : "grid sm:grid-cols-2 gap-4"}>
+      <div className={compact ? "grid grid-cols-1 gap-4" : "grid sm:grid-cols-2 gap-4"}>
         <div className="space-y-1.5">
           <Label htmlFor="name" className={labelCls}>Name</Label>
           <Input

@@ -40,6 +40,22 @@ function ContactPage() {
             <div className="mt-6">
               <LeadForm source="contact" siteVisit />
             </div>
+
+            <div className="mt-8 pt-6 border-t border-border grid grid-cols-3 gap-4">
+              {[
+                { icon: Phone, title: "30-min callback", desc: "We ring you to schedule" },
+                { icon: MapPin, title: "Free site survey", desc: "On-ground assessment" },
+                { icon: Clock, title: "Quote in 48 hrs", desc: "Transparent, itemised" },
+              ].map((s) => (
+                <div key={s.title} className="text-center sm:text-left">
+                  <div className="w-9 h-9 rounded-lg bg-gold-soft text-gold grid place-items-center mx-auto sm:mx-0">
+                    <s.icon className="w-5 h-5" />
+                  </div>
+                  <div className="mt-2 text-sm font-semibold">{s.title}</div>
+                  <div className="text-xs text-muted-foreground">{s.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="lg:col-span-2 space-y-4">
@@ -66,15 +82,6 @@ function ContactPage() {
             <div className="rounded-2xl bg-card border border-border p-6">
               <MapPin className="w-6 h-6 text-gold" />
               <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Head Office</div>
-              <div className="mt-1 font-semibold">Single Stop Building Solutions Pvt Ltd</div>
-              <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
-                <Clock className="w-3 h-3" /> Mon-Sat 9 AM – 7 PM
-              </div>
-            </div>
-
-            <div className="rounded-2xl bg-card border border-border p-6">
-              <MapPin className="w-6 h-6 text-gold" />
-              <div className="mt-3 text-xs text-muted-foreground uppercase tracking-wider">Branch Office</div>
               <div className="mt-1 font-semibold">Single Stop Building Solutions Pvt Ltd</div>
               <div className="text-sm text-muted-foreground">S9, Gulab Vihar, near Domino's, Sheer Sagar Patrakar Colony, Dholai, Jaipur, Rajasthan 302020</div>
               <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">

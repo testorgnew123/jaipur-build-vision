@@ -131,3 +131,33 @@ export function articleSchema(p: {
     mainEntityOfPage: `${SITE_URL}/blog/${p.slug}`,
   };
 }
+
+export function packageSchema(p: {
+  name: string;
+  description: string;
+  price: string;
+  unit: string;
+  slug: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${p.name} Construction Package`,
+    description: p.description,
+    brand: { "@type": "Brand", name: "SingleStop" },
+    category: "Residential construction",
+    url: `${SITE_URL}/packages/${p.slug}`,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+      url: `${SITE_URL}/packages/${p.slug}`,
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: Number(p.price.replace(/[^\d]/g, "")),
+        priceCurrency: "INR",
+        unitText: p.unit,
+      },
+    },
+  };
+}
