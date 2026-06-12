@@ -150,7 +150,7 @@ function AboutPage() {
                 <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full overflow-hidden bg-white/10 shrink-0 ring-2 ring-gold/40">
                     <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                      src="/neeraj.jpeg"
                       alt="Neeraj Singhal, Founder"
                       className="w-full h-full object-cover"
                     />
