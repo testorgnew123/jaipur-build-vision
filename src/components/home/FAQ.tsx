@@ -27,10 +27,6 @@ export const faqs = [
     a: "We plan milestones before execution, keep you updated throughout the project, and work to resolve delays with clear communication and accountability.",
   },
   {
-    q: "Do you handle JDA / RERA approvals?",
-    a: "Yes. Our in-house liaison team handles JDA approvals, RERA registration (where applicable), and structural NOCs end-to-end.",
-  },
-  {
     q: "Can I use your live tracking dashboard?",
     a: "Every active client gets dashboard access with daily site photos, milestone progress, material logs and real-time messaging with your project manager.",
   },

@@ -54,7 +54,6 @@ const html = `<!DOCTYPE html>
   <h1>Build smarter.<br><span class="accent">Live luxuriously.</span></h1>
   <p class="sub">Premium construction in Jaipur · Planning · Construction · PMC · Interiors</p>
   <div class="url">singlestop.co.in</div>
-  <div class="badge"><span class="dot"></span> RERA · ISO 9001 · 100+ projects</div>
 </body></html>`;
 
 const run = async () => {

@@ -83,9 +83,8 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-px mx-auto max-w-7xl py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+        <div className="container-px mx-auto max-w-7xl py-6 flex flex-col items-center justify-center gap-3 text-xs text-white/50">
           <p>Copyright {new Date().getFullYear()} Single Stop Building Solutions Pvt Ltd. All rights reserved.</p>
-          <p>RERA Registered - ISO 9001 Certified - JDA Approved</p>
         </div>
       </div>
     </footer>

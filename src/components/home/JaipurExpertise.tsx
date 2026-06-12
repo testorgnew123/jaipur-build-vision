@@ -18,13 +18,13 @@ export function JaipurExpertise() {
             Born in Jaipur. <br /><span className="text-gold">Built for Jaipur.</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            We know Jaipur's soil conditions, climate, JDA approval workflows, RERA compliance,
+            We know Jaipur's soil conditions, climate, Authority approval workflows,
             heritage zone restrictions, and local material supply chains intimately. Eight years of
             building exclusively in the Pink City means your project moves faster, cheaper, and smoother.
           </p>
           <ul className="mt-6 space-y-2 text-sm">
-            <li className="flex gap-2"><span className="text-gold">✓</span> Direct liaison with JDA, JMC and BSUP</li>
-            <li className="flex gap-2"><span className="text-gold">✓</span> RERA-compliant documentation</li>
+            <li className="flex gap-2"><span className="text-gold">✓</span> Direct liaison with Authorities</li>
+            <li className="flex gap-2"><span className="text-gold">✓</span> Autorities compliant documentation</li>
             <li className="flex gap-2"><span className="text-gold">✓</span> Local material network — no markup</li>
             <li className="flex gap-2"><span className="text-gold">✓</span> Vastu-trained architects on staff</li>
           </ul>
