@@ -164,7 +164,6 @@ function AboutPage() {
                 </div>
               </div>
             </div>
-
             <div className="lg:col-span-5 space-y-6">
               {[
                 {
