@@ -158,7 +158,7 @@ function AboutPage() {
                   <div>
                     <div className="font-display font-bold text-lg text-white">Neeraj Singhal</div>
                     <div className="mt-0.5 text-xs text-gold tracking-wider uppercase">
-                      Founder &amp; CEO
+                      Founder &amp; Director
                     </div>
                   </div>
                 </div>
