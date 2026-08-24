@@ -11,6 +11,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# nodemailer uses dynamic requires the esbuild bundler cannot trace, so ship it as a
+# real node_module inside the function bundle instead of inlining it.
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["nodemailer"]
+
 # Exact collection routes — must come before wildcards
 [[redirects]]
   from = "/api/auth"

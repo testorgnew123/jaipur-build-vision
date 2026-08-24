@@ -1,6 +1,7 @@
 import type { Handler } from "@netlify/functions";
 import { sql } from "./_lib/db";
 import { cors, errorResponse, optionsResponse, requireAuth } from "./_lib/auth";
+import { sendLeadNotification, type LeadRow } from "./_lib/mail";
 
 export const handler: Handler = async (event) => {
   if (event.httpMethod === "OPTIONS") return optionsResponse("GET, POST");
@@ -40,6 +41,7 @@ export const handler: Handler = async (event) => {
         VALUES (${name}, ${phone}, ${notes ?? null})
         RETURNING *
       `;
+      await sendLeadNotification(rows[0] as LeadRow);
       return cors(rows[0], 201);
     }
 

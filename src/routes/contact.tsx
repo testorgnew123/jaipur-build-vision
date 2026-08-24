@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Single Stop Building Solutions Pvt Ltd - Jaipur Construction Experts" },
-      { name: "description", content: "Get a free consultation with Single Stop Building Solutions Pvt Ltd. Call, WhatsApp or fill the form - replies within 30 minutes." },
+      { name: "description", content: "Get a free consultation with Single Stop Building Solutions Pvt Ltd. Call, WhatsApp or fill the form - replies shortly" },
       { property: "og:title", content: "Contact Single Stop Building Solutions Pvt Ltd" },
       { property: "og:description", content: "Free consultation with Jaipur's premium construction company." },
       { property: "og:image", content: OG_IMAGE },
@@ -36,7 +36,7 @@ function ContactPage() {
         <div className="mt-14 grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3 rounded-2xl bg-card border border-border p-7 lg:p-9 shadow-soft">
             <h2 className="font-display text-2xl font-bold">Request a Site Visit</h2>
-            <p className="text-sm text-muted-foreground mt-1">We'll call to schedule your visit within 30 minutes.</p>
+            <p className="text-sm text-muted-foreground mt-1">We'll call to schedule your visit shortly.</p>
             <div className="mt-6">
               <LeadForm source="contact" siteVisit />
             </div>

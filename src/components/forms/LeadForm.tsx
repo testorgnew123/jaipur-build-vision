@@ -107,8 +107,8 @@ export function LeadForm({
 
       setSubmitted(true);
       const msg = siteVisit
-        ? "Visit request received! We'll call within 30 minutes."
-        : "Thank you! Our expert will call you within 30 minutes.";
+        ? "Visit request received! We'll call connect you shortly"
+        : "Thank you! Our expert will connect you shortly.";
       toast.success(msg);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Something went wrong";
@@ -126,7 +126,7 @@ export function LeadForm({
           {siteVisit ? "Visit request received!" : "Request received"}
         </h3>
         <p className="text-sm text-muted-foreground mt-1">
-          Our consultant will reach out within 30 minutes.
+          Our consultant will connect you shortly.
         </p>
       </div>
     );
@@ -196,7 +196,7 @@ export function LeadForm({
           : "Get Free Consultation"}
       </Button>
       <p className={`text-xs text-center ${variant === "dark" ? "text-white/60" : "text-muted-foreground"}`}>
-        We'll call within 30 minutes. No spam, ever.
+        We'll connect you shortly. No spam, ever.
       </p>
     </form>
   );
