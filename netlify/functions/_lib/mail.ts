@@ -82,7 +82,6 @@ export async function sendLeadNotification(visit: LeadRow): Promise<void> {
   }
 
   const meta = parseMeta(visit.notes);
-  const source = meta.source || "website";
   const digits = visit.client_phone.replace(/\D/g, "");
 
   const rows = Object.entries(meta)
@@ -121,7 +120,7 @@ export async function sendLeadNotification(visit: LeadRow): Promise<void> {
       transport.sendMail({
         from: process.env.SMTP_FROM || `"Single Stop Website" <${process.env.SMTP_USER}>`,
         to: NOTIFY_TO,
-        subject: `New lead: ${visit.client_name} (${source})`,
+        subject: `New lead: ${visit.client_name} - ${visit.client_phone}`,
         text,
         html,
       }),
