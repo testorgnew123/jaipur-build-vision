@@ -160,6 +160,9 @@ function AboutPage() {
                     <div className="mt-0.5 text-xs text-gold tracking-wider uppercase">
                       Founder &amp; Director
                     </div>
+                    <div className="mt-0.5 text-xs text-white/60">
+                      M.Tech (Civil Structural Engineering)
+                    </div>
                   </div>
                 </div>
               </div>
